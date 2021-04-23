@@ -1,14 +1,17 @@
-<div class="card" style="width: 18rem; margin: auto; margin-top: 2rem; height: 30rem;">
+<div class="card" style="width: 40rem; margin: auto; margin-top: 2rem; height: 40rem;">
   <div style="text-align: center; border-bottom: 1px solid black; height: 5rem;">
-    This will the be post sup
+    This is the other group's problem
   </div>
   <div class="card-body">
     <div *ngFor = "let response of responses">
-        <p>{{response.content}}</p>
+        <div [ngStyle]="{'display': getDisplayType(response.showMore)}"style="border: 1px solid black; padding: 10px; margin-bottom: 10px; border-radius: 5px; height: 5rem;">
+          {{response.response}}
+          <span *ngIf="response.showMore" (click)="showMore(response.id)">...Show More</span>
+        </div>
     </div>
   </div>
     <div style="margin: auto;  width: 100%;">
-      <textarea id="response-input" style="resize:none; width: 100%;" rows="5" placeholder="Content" [(ngModel)]="currentResponse"></textarea>
+      <textarea id="response-input" style="resize:none; width: 100%;" rows="5" placeholder="Response" [(ngModel)]="currentResponse"></textarea>
     </div>
     <div id="submit-resp" style="text-align:center; border: 2px solid black;" (click)="handleResponses()">Reply</div>
 </div>
