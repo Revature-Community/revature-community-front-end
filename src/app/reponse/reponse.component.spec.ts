@@ -1,10 +1,21 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { ReponseComponent } from './reponse.component';
+
+const fakeResponses: any = [
+  {id: 1, content: "this is a reply", post_id: 1},
+  {id: 2, content: "this is a second reply", post_id: 1},
+  {id: 3, content: "this is a third reply", post_id: 1}
+];
 
 describe('ReponseComponent', () => {
   let component: ReponseComponent;
   let fixture: ComponentFixture<ReponseComponent>;
+  let responseDe: DebugElement;
+  let submitEl: DebugElement;
+  let expectedResp;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -17,9 +28,31 @@ describe('ReponseComponent', () => {
     fixture = TestBed.createComponent(ReponseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    responseDe = fixture.debugElement.query(By.css('#response-input'));
+    submitEl = fixture.debugElement.query(By.css('#submit-resp'));
   });
-
+  
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  
+  it('should enter create response when submitted', () => {
+    expectedResp = {id: 1, response: 'Some Response'};
+    const expectedResponse = expectedResp.response;
+    responseDe.nativeElement.value = expectedResp.response;
+    submitEl.triggerEventHandler('click', null);
+    expect(responseDe.nativeElement.value).toContain(expectedResponse);
+  })
+
+  describe('Render', () => {
+
+    beforeEach(() => {
+      fixture.detectChanges();
+    });
+
+    it('should have a response', () => {
+      const responseElements = fixture.debugElement.queryAll(By.css('.response'));
+      expect(responseElements.length).toBe(fakeResponses.length);
+    });
   });
 });

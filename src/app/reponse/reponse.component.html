@@ -1,1 +1,14 @@
-<p>reponse works!</p>
+<div class="card" style="width: 18rem; margin: auto; margin-top: 2rem; height: 30rem;">
+  <div style="text-align: center; border-bottom: 1px solid black; height: 5rem;">
+    This will the be post sup
+  </div>
+  <div class="card-body">
+    <div *ngFor = "let response of responses">
+        <p>{{response.content}}</p>
+    </div>
+  </div>
+    <div style="margin: auto;  width: 100%;">
+      <textarea id="response-input" style="resize:none; width: 100%;" rows="5" placeholder="Content" [(ngModel)]="currentResponse"></textarea>
+    </div>
+    <div id="submit-resp" style="text-align:center; border: 2px solid black;" (click)="handleResponses()">Reply</div>
+</div>
