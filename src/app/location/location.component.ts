@@ -9,10 +9,10 @@ export class LocationComponent implements OnInit {
 
     
 
-    locationform: string = "";
+    locationinput: string = "";
 
     onKey (event: any) {
-	this.locationform = event.target.value;
+	this.locationinput = event.target.value;
     }
 
     constructor() { }
