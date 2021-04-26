@@ -3,18 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WritepostComponent } from './components/writepost/writepost.component';
-import { ReadpostComponent } from './components/readpost/readpost.component';
+
+import { PostsModule } from './posts/posts.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    WritepostComponent,
-    ReadpostComponent
+    AppComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PostsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
