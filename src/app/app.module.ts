@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { WritepostComponent } from './writepost/writepost.component';
 import { ReadpostComponent } from './readpost/readpost.component';
 import { ReponseComponent } from './reponse/reponse.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReponseComponent } from './reponse/reponse.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

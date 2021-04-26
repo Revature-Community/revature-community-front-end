@@ -1,0 +1,16 @@
+#submit-resp:hover{
+    cursor: pointer;
+}
+
+#response-input {
+
+}
+
+.response {
+    
+}
+
+.show-more:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
