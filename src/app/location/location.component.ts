@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocationComponent implements OnInit {
 
-    
+    // Implement validation based upon actual city names
 
     locationform: string = "";
 
