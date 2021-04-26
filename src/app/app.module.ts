@@ -5,22 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WritepostComponent } from './writepost/writepost.component';
 import { ReadpostComponent } from './readpost/readpost.component';
-import { ReponseComponent } from './reponse/reponse.component';
+import { ResponseComponent } from './response/response.component';
 import { FormsModule } from '@angular/forms';
+import { ResponsePipePipe } from './response-pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     WritepostComponent,
     ReadpostComponent,
-    ReponseComponent
+    ResponseComponent,
+    ResponsePipePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [ResponsePipePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

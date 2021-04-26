@@ -2,7 +2,7 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { ReponseComponent } from './reponse.component';
+import { ResponseComponent } from './response.component';
 
 const fakeResponses: any = [
   {id: 1, content: "this is a reply", post_id: 1},
@@ -11,21 +11,21 @@ const fakeResponses: any = [
 ];
 
 describe('ReponseComponent', () => {
-  let component: ReponseComponent;
-  let fixture: ComponentFixture<ReponseComponent>;
+  let component: ResponseComponent;
+  let fixture: ComponentFixture<ResponseComponent>;
   let responseDe: DebugElement;
   let submitEl: DebugElement;
   let expectedResp;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReponseComponent ]
+      declarations: [ ResponseComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReponseComponent);
+    fixture = TestBed.createComponent(ResponseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     responseDe = fixture.debugElement.query(By.css('#response-input'));

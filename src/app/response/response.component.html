@@ -5,9 +5,9 @@
   <div id="response-container" style="height: 100%;">
     <div style="width:95%; margin:auto"class="response-body">
       <div *ngFor = "let response of responses">
-          <div [ngStyle]="{'display': getDisplayType(response.showMore)}"style="border: 1px solid black; padding: 10px;margin: 10px 0px 5px 0px; border-radius: 10px; height: 5rem;">
-            <span>{{response.response}}</span>
-            <span class="show-more" *ngIf="response.showMore" (click)="showMore(response.id)">...Show More</span>
+          <div [ngStyle]="{'display': getDisplayType(response.showMore)}"style="border: 1px solid black; padding: 10px;margin: 10px 0px 5px 0px; border-radius: 10px; height: autosize;">
+            <span>{{response.response | responsePipe:response.show}}</span>
+            <span class="show-more" *ngIf="!response.show"  (click)="changeParam(response.id)">...Show More</span>
           </div>
       </div>
     </div>
