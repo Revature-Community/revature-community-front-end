@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WritepostComponent } from './writepost/writepost.component';
-import { ReadpostComponent } from './readpost/readpost.component';
+import { WritepostComponent } from './components/writepost/writepost.component';
+import { ReadpostComponent } from './components/readpost/readpost.component';
 
 @NgModule({
   declarations: [

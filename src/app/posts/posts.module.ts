@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { WritepostComponent } from '../writepost/writepost.component';
-import { ReadpostComponent } from '../readpost/readpost.component';
+import { WritepostComponent } from '../components/writepost/writepost.component';
+import { ReadpostComponent } from '../components/readpost/readpost.component';
 
 
 
