@@ -1,17 +1,20 @@
-<div class="card" style="width: 40rem; margin: auto; margin-top: 2rem; height: 40rem;">
+<div class="card" style="width: 40rem; margin: auto; margin-top: 2rem; height: 30rem;">
   <div style="text-align: center; border-bottom: 1px solid black; height: 5rem;">
     This is the other group's problem
   </div>
-  <div class="card-body">
-    <div *ngFor = "let response of responses">
-        <div [ngStyle]="{'display': getDisplayType(response.showMore)}"style="border: 1px solid black; padding: 10px; margin-bottom: 10px; border-radius: 5px; height: 5rem;">
-          {{response.response}}
-          <span *ngIf="response.showMore" (click)="showMore(response.id)">...Show More</span>
-        </div>
+  <div id="response-container" style="height: 100%;">
+    <div style="width:95%; margin:auto"class="response-body">
+      <div *ngFor = "let response of responses">
+          <div [ngStyle]="{'display': getDisplayType(response.showMore)}"style="border: 1px solid black; padding: 10px;margin: 10px 0px 5px 0px; border-radius: 10px; height: 5rem;">
+            <span>{{response.response}}</span>
+            <span class="show-more" *ngIf="response.showMore" (click)="showMore(response.id)">...Show More</span>
+          </div>
+      </div>
     </div>
+      <div style="text-align: center; width: 100%;">
+        <textarea id="response-input" style="resize:none; width: 95%; padding-left: 10px;" rows="1" (keyup)="autoGrow()" placeholder="Response" [(ngModel)]="currentResponse" #textArea></textarea>
+        <img id="submit-resp" style="position: relative; bottom: 13px;"(click)="handleResponses()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA7UlEQVRIidXVsUpDMRTG8V9toUi7q2C1KtZB6Yv0CXQRKU7uTr6LuAo+i7g6Ch1UBHUtbV1u4VJyS+zNHfrBgZATvn9ySE5Yd9UDcycY4Bs/qYFDTDHDGPc4Sgn4zMzzkRS0aJ6PCR7RqwqQBBQDKAX6DyAKtHhNR3jGG37RQBu1JZuq4RQ3OMMLvvLJvM4DBk10sI9uNu5gswA4xjUeYgEhbWALfVwG8u/Yni8so6LSzeaDRoTJKiW6LQK0sIuDLA6xI+6kUzzhDq9Fi5Jf0zKAyh5aZa0iSbP7CBgnbddXKv5w4BgX2EttvJ76A3vKiHKhqFQ/AAAAAElFTkSuQmCC"/>
+      </div>
+      <!-- <div id="submit-resp" style="text-align:center; border: 1px solid black; margin-top: 30px;" (click)="handleResponses()">Reply</div> -->
   </div>
-    <div style="margin: auto;  width: 100%;">
-      <textarea id="response-input" style="resize:none; width: 100%;" rows="5" placeholder="Response" [(ngModel)]="currentResponse"></textarea>
-    </div>
-    <div id="submit-resp" style="text-align:center; border: 2px solid black;" (click)="handleResponses()">Reply</div>
 </div>
