@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 
 import { PostsModule } from './posts/posts.module';
+
+import { PostsService } from './posts.service';
+
 
 @NgModule({
   declarations: [
@@ -14,9 +17,10 @@ import { PostsModule } from './posts/posts.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PostsModule
+    PostsModule,
+    HttpClientModule 
   ],
-  providers: [],
+  providers: [PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
