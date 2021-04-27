@@ -1,14 +1,11 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { RepliesService } from './replies.service';
-import {
-  HttpClientTestingModule,
-  HttpTestingController
-} from "@angular/common/http/testing";
+import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import { HttpClient } from '@angular/common/http';
 describe('RepliesService', () => {
   let baseUrl = 'http://localhost:8085/api/v1/responses/';
   let repliesService: RepliesService;
-  let response:any;
+  let response: any;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
 
@@ -32,39 +29,40 @@ describe('RepliesService', () => {
     expect(repliesService).toBeTruthy();
   });
 
-    let result: any = [];
+  let result: any = [];
 
-    it('expects a GET request', inject([HttpClient, HttpTestingController], (http: HttpClient, httpMock: HttpTestingController) => {
-      http
-        .get(baseUrl)
-        .subscribe(data => {
-          result = data;
-          expect(result).toEqual(response)
-        });
+  it('expects a GET request', inject([HttpClient, HttpTestingController], (http: HttpClient, httpMock: HttpTestingController) => {
+    http
+      .get(baseUrl)
+      .subscribe(data => {
+        result = data;
+        expect(result).toEqual(response)
+      });
   
-      const req = httpMock.expectOne(baseUrl);
-      expect(req).toBeDefined();
-      expect(req.request.method).toEqual('GET');
-      req.flush([
-        {
-            "id": 1,
-            "content": "drerit dolor magna. Duis ultricies lacus sed turpis tincidunt.",
-            "postId": 1
-        },
-    ]);
-      httpMock.verify();
-    }));
+    const req = httpMock.expectOne(baseUrl);
+    expect(req).toBeDefined();
+    expect(req.request.method).toEqual('GET');
+    req.flush([
+      {
+          "id": 1,
+          "content": "drerit dolor magna. Duis ultricies lacus sed turpis tincidunt.",
+          "postId": 1
+      },
+  ]);
+    httpMock.verify();
+  }));
 
-    it ("should make a reply and return it", () => {
-      const reply = {
-        "postId": 1,
-        "content": "test service...?"
-      };
-      repliesService.postReply(reply).subscribe(
-        data => expect(reply).toEqual(reply, 'should return reply'),fail
-      );
+  it ("should make a reply and return it", () => {
+    const reply = {
+      "postId": 1,
+      "content": "test service...?"
+    };
+    repliesService.postReply(reply).subscribe(
+      data => expect(reply).toEqual(reply, 'should return reply'),fail
+    );
 
-      const req = httpTestingController.expectOne(baseUrl+'submit-response');
-      expect(req.request.body).toEqual(reply);
-    })
+    const req = httpTestingController.expectOne(baseUrl+'submit-response');
+    expect(req.request.body).toEqual(reply);
+  })
+
 });
