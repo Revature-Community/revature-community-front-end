@@ -12,12 +12,10 @@ export class ResponseComponent implements OnInit {
   @Input() postId: number | any;
   @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef | any;
   responses:any = [];
-  responseData:any = [];
   currentResponse:any;
   ngOnInit(): void {
     this.repliesService.getReplies(this.postId).subscribe(res => {
-      this.responseData = res;
-      for (let val of this.responseData) {
+      for (let val of res) {
         let lenless255 = false;
         if (val.content.length > 255) {
           lenless255 = true;
