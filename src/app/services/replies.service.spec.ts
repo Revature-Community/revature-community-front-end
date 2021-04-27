@@ -1,5 +1,4 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { RepliesService } from './replies.service';
 import {
   HttpClientTestingModule,
@@ -10,13 +9,16 @@ describe('RepliesService', () => {
   let baseUrl = 'http://localhost:8085/api/v1/responses/';
   let repliesService: RepliesService;
   let response:any;
+  let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      imports: [HttpClientTestingModule],
     }).compileComponents();
     repliesService = TestBed.inject(RepliesService);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
     response = [
       {
           "id": 1,
@@ -53,16 +55,16 @@ describe('RepliesService', () => {
       httpMock.verify();
     }));
 
-    it("should make a POST request to create a new reply", () => {
+    it ("should make a reply and return it", () => {
       const reply = {
         "postId": 1,
         "content": "test service...?"
       };
-      repliesService.postReply(reply).subscribe();
-      let req = httpTestingController.expectOne({
-        method: "POST",
-        url: baseUrl
-      })
-      expect(req.request.body).toEqual(reply)
+      repliesService.postReply(reply).subscribe(
+        data => expect(reply).toEqual(reply, 'should return reply'),fail
+      );
+
+      const req = httpTestingController.expectOne(baseUrl+'submit-response');
+      expect(req.request.body).toEqual(reply);
     })
 });
