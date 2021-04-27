@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocationService } from '../location.service';
 
 @Component({
   selector: 'app-location',
@@ -9,10 +10,10 @@ export class LocationComponent implements OnInit {
 
     // Implement validation based upon actual city names
 
-    locationform: string = "";
+    locationinput: string = "";
 
     onKey (event: any) {
-	this.locationform = event.target.value;
+	this.locationinput = event.target.value;
     }
 
     constructor() { }

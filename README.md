@@ -1,4 +1,10 @@
-# Locationsvc
+# Location Service
+
+## Generating Test Data
+
+For information about how to generate a test database of city names, refer to the comments in server/generate.js.
+
+## Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
 
