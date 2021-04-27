@@ -13,4 +13,5 @@ export class AppComponent {
   ngOnInit() {
     this.todaydate = this.postsservice.showTodayDate();
   }
+
 }
