@@ -15,7 +15,7 @@ export class WritepostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  randomLocation: Locations= {id:1, location:"test"};
+  randomLocation: Locations= {id:2};
 
   randomPost: Posts = {
     title: "hi", 

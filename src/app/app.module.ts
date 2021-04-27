@@ -10,6 +10,7 @@ import { LocationComponent } from './location/location.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { FooterComponent } from './footer/footer.component';
 import { PostsModule } from './posts/posts.module';
+import { PostsService } from './posts.service';
 
           
 @NgModule({
@@ -28,7 +29,7 @@ import { PostsModule } from './posts/posts.module';
     HttpClientModule,
     PostsModule
   ],
-  providers: [ResponsePipePipe],
+  providers: [ResponsePipePipe, PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

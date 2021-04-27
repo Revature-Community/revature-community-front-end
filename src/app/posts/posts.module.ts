@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { WritepostComponent } from './writepost/writepost.component';
 import { ReadpostComponent } from './readpost/readpost.component';
+import { PostsService } from '../posts.service';
 
 
 
@@ -11,6 +12,7 @@ import { ReadpostComponent } from './readpost/readpost.component';
   declarations: [
     WritepostComponent,
     ReadpostComponent
+    
   ],
   imports: [
     CommonModule
