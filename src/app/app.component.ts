@@ -11,6 +11,6 @@ export class AppComponent {
   todaydate;
   constructor(private postsservice: PostsService){}
   ngOnInit() {
-    this.todaydate = this.postsservice.showTodayDate();
+    // this.todaydate = this.postsservice.showTodayDate();
   }
 }

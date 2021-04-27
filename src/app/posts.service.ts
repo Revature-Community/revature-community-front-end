@@ -1,11 +1,21 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Posts } from './models/posts';
+
 
 @Injectable()
 export class PostsService {
 
-  constructor() { }
-  showTodayDate() {
-    let ndate = new Date ();
-    return ndate;
+  baseUrl = 'http://localhost:8085/post/';
+
+  constructor(private http:HttpClient) { }
+  httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})}
+  submitPost(posts: Posts): Observable <Posts> {
+    return this.http.post<any>(this.baseUrl, JSON.stringify(posts));
   }
+  // showTodayDate() {
+  //   let ndate = new Date ();
+  //   return ndate;
+  // }
 }
