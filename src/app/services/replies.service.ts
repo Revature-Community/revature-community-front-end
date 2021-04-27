@@ -41,7 +41,17 @@ export class RepliesService {
   }
 
   updateReply(reply:object): Observable<any> { 
-    return this.http.put<any>(this.baseUrl+"update", reply).pipe(
+    return this.http.put<any>(this.baseUrl+"update", reply)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
+  }
+
+  deleteReply(id: number): Observable<any> {
+    return this.http.delete<any>(this.baseUrl + "delete/" + id)
+    .pipe(
+      retry(1),
       catchError(this.errorHandler)
     )
   }

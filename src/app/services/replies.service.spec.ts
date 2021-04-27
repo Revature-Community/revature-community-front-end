@@ -67,4 +67,30 @@ describe('RepliesService', () => {
       const req = httpTestingController.expectOne(baseUrl+'submit-response');
       expect(req.request.body).toEqual(reply);
     })
+
+    it ("should delete the selected reply", inject([HttpClient, HttpTestingController], (http: HttpClient, httpMock: HttpTestingController) => {
+      repliesService.deleteReply(1).subscribe((data:any) => {
+        expect(data).toBe(1);
+      });
+
+      const req = httpMock.expectOne(baseUrl+'delete/'+1);
+      expect(req.request.method).toBe('DELETE');
+      req.flush(1);
+      httpMock.verify();
+    }));
+
+    it ("should update the selected reply"), inject([HttpClient, HttpTestingController], (http: HttpClient, httpMock: HttpTestingController) => {
+      const reply = {
+        "postId": 1,
+        "content": "test service...?"
+      };
+      repliesService.updateReply(reply).subscribe((data: any) => {
+        expect(data.content).toBe("test service...?");
+      });
+
+      const req = httpMock.expectOne(baseUrl+"update");
+      expect(req.request.method).toBe('PUT');
+      req.flush({content: "testing wheeeeee"});
+      httpMock.verify();
+    });
 });
