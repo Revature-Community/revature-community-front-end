@@ -1,6 +1,7 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { ResponsePipePipe } from '../response-pipe.pipe';
 
 import { ResponseComponent } from './response.component';
 
@@ -19,7 +20,10 @@ describe('ReponseComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResponseComponent ]
+      declarations: [ 
+        ResponseComponent,
+        ResponsePipePipe
+      ]
     })
     .compileComponents();
   });
