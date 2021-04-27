@@ -1,4 +1,8 @@
 <div class="revature" style="width: 30%; height: 250px;">
 <input style="width: 95%" (keyup)="onKey($event)" placeholder="Enter Your City">
 <p class="revature">You entered: {{locationinput}}</p>
+
+<button class=btn (click)=findLocation()>Search</button>
+
+<p class=revature>Search result: {{locationSearched.location}}</p>
 </div>

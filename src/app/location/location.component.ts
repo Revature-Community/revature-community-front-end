@@ -12,14 +12,18 @@ export class LocationComponent implements OnInit {
 
     locationinput: string = "";
 
+    locationSearched : Location;
     onKey (event: any) {
 	this.locationinput = event.target.value;
     }
 
-    constructor() { }
+    constructor(private locationService:LocationService) { }
 
-  ngOnInit(): void {
-
+  ngOnInit(): void {}
+  
+  findLocation(){
+    this.locationService.findLocation(1).subscribe(data=>{
+      this.locationSearched=data;
+    });
   }
-
 }
