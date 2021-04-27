@@ -1,0 +1,4 @@
+<label for="locs">Choose a location:</label>
+<select name="locs" id="locs">
+  <option *ngFor="let loc of locations" [value]="loc.id">{{loc.location}}</option>
+</select>
