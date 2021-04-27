@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Posts } from './models/posts';
 
-
 @Injectable()
 export class PostsService {
 
@@ -12,7 +11,7 @@ export class PostsService {
   constructor(private http:HttpClient) { }
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})}
   submitPost(posts: Posts): Observable <Posts> {
-    return this.http.post<any>(this.baseUrl, JSON.stringify(posts));
+    return this.http.post<any>(this.baseUrl + 'addPost', posts);
   }
   // showTodayDate() {
   //   let ndate = new Date ();

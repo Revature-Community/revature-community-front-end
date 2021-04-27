@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ReadpostComponent } from './components/readpost/readpost.component';
-import { WritepostComponent } from './components/writepost/writepost.component';
+import { ReadpostComponent } from './posts/readpost/readpost.component';
+import { WritepostComponent } from './posts/writepost/writepost.component';
 
 const routes: Routes = [
   {
