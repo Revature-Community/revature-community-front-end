@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WritepostComponent } from './components/writepost/writepost.component';
 import { ReadpostComponent } from './components/readpost/readpost.component';
+import { PostsService } from './posts.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { ReadpostComponent } from './components/readpost/readpost.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
