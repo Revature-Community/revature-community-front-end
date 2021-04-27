@@ -1,4 +1,8 @@
 <div class="revature" style="width: 30%; height: 250px;">
 <input style="width: 95%" (keyup)="onKey($event)" placeholder="Enter Your City">
+<label for="locs">Choose a location:</label>
+<select name="locs" id="locs">
+  <option *ngFor="let loc of locations" [value]="loc.id">{{loc.location}}</option>
+</select>
 <p class="revature">You entered: {{locationinput}}</p>
 </div>
