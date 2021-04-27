@@ -8,6 +8,9 @@ import { ReadpostComponent } from './readpost/readpost.component';
 import { ResponseComponent } from './response/response.component';
 import { FormsModule } from '@angular/forms';
 import { ResponsePipePipe } from './response-pipe.pipe';
+import { LocationComponent } from './location/location.component';
+import { TopnavComponent } from './topnav/topnav.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { ResponsePipePipe } from './response-pipe.pipe';
     WritepostComponent,
     ReadpostComponent,
     ResponseComponent,
-    ResponsePipePipe
+    ResponsePipePipe,
+    LocationComponent,
+    TopnavComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

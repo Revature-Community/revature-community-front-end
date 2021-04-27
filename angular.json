@@ -1,14 +1,18 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "d7757b48-fa5d-4156-aa75-feab21515642"
+    "analytics": false
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "RevatureCommunity": {
+    "locationsvc": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -16,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/RevatureCommunity",
+            "outputPath": "dist/locationsvc",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -49,13 +53,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ]
             }
@@ -64,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "RevatureCommunity:build"
+            "browserTarget": "locationsvc:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "RevatureCommunity:build:production"
+              "browserTarget": "locationsvc:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "RevatureCommunity:build"
+            "browserTarget": "locationsvc:build"
           }
         },
         "test": {
@@ -112,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "RevatureCommunity:serve"
+            "devServerTarget": "locationsvc:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "RevatureCommunity:serve:production"
+              "devServerTarget": "locationsvc:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "RevatureCommunity"
+  "defaultProject": "locationsvc"
 }

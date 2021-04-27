@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ResponsePipePipe implements PipeTransform {
 
   
-  transform(response, param){
+  transform(response: string, param: boolean){
     if(param ===false){
       return response.slice(0, 255)
     }else{

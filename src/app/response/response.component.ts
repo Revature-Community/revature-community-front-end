@@ -8,16 +8,17 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 export class ResponseComponent implements OnInit {
   
   constructor() { }
-  @Input() post: number;
-  @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef;
-  responses = [];
-  responseData = [];
-  currentResponse: string;
+  @Input() postId: number | any;
+  @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef | any;
+  responses:any = [];
+  responseData:any = [];
+  currentResponse:any;
   ngOnInit(): void {
+    console.log(this.postId);
     const data = [
-      {id: 1, content: "this is a reply this is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythisthis is a reply this is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third this is a reply this is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third hello world", author: "", location: "place 1", post_id: 1},
-      {id: 2, content: "this is a reply this is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis ", author: "", location: "place 1",  post_id: 1},
-      {id: 3, content: "this is a reply this is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythisthis is a reply this is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third this is a reply this is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third hello world", author: "", location: "place 1",  post_id: 1}
+      {id: 1, content: "hello world", author: "", location: "place 1", post_id: 1},
+      {id: 2, content: "this is a reply this is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis", author: "", location: "place 1",  post_id: 1},
+      {id: 3, content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A cras semper auctor neque vitae tempus. Pellentesque id nibh tortor id aliquet lectus proin. Pharetra pharetra massa massa ultricies mi quis hendrerit dolor magna. Duis ultricies lacus sed turpis tincidunt. Semper eget duis at tellus at urna condimentum. Eget aliquet nibh praesent tristique magna sit. Metus aliquam eleifend mi in nulla posuere sollicitudin. Ipsum a arcu cursus vitae congue mauris rhoncus. Dignissim cras tincidunt lobortis feugiat vivamus at. Sed euismod nisi porta lorem mollis aliquam. Quis vel eros donec ac odio tempor orci dapibus ultrices. Habitant morbi tristique senectus et netus. Sed cras ornare arcu dui vivamus arcu.", author: "", location: "place 1",  post_id: 1}
     ]
     this.responseData = data;
     for (let val of data) {
@@ -37,21 +38,16 @@ export class ResponseComponent implements OnInit {
       lenless255 = true;
     }
     const postId = this.responseData[0].post_id;
-    const newPost = {id: this.responses.length+1, response: this.currentResponse, post_id: postId, show: !lenless255};
+    const newPost = {id: this.responses.length+1, response: this.currentResponse, post_id: this.postId, show: !lenless255};
     this.responses.push(newPost);
     this.currentResponse = "";
   }
 
-  changeParam(id){
+  changeParam(id:number){
     this.responses[id-1].show = true;
   }
-  
-  showMore(id) {
-    this.responses[id-1].response = this.responseData[id-1].content;
-    this.responses[id-1].showMore = false;
-  }
 
-  getDisplayType(type) {
+  getDisplayType(type:any) {
     return type ? 'inline-table' : 'x';
   }
 

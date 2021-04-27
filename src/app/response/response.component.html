@@ -1,20 +1,21 @@
-<div class="card" style="width: 40rem; margin: auto; margin-top: 2rem; height: 30rem;">
-  <div style="text-align: center; border-bottom: 1px solid black; height: 5rem;">
-    This is the other group's problem
+<div class="card">
+  <div style="text-align: center; border-bottom: 1px solid white; height: 5rem;">
+    Sample Post!
   </div>
   <div id="response-container" style="height: 100%;">
-    <div style="width:95%; margin:auto"class="response-body">
+    <div id="response-body">
       <div *ngFor = "let response of responses" class="response">
-          <div [ngStyle]="{'display': getDisplayType(response.showMore)}"style="border: 1px solid black; padding: 10px;margin: 10px 0px 5px 0px; border-radius: 10px; height: autosize;">
+          <div id="res" [ngStyle]="{'display': getDisplayType(response.showMore)}">
             <span>{{response.response | responsePipe:response.show}}</span>
             <span class="show-more" *ngIf="!response.show"  (click)="changeParam(response.id)">...Show More</span>
           </div>
       </div>
     </div>
-      <div style="text-align: center; width: 100%;">
-        <textarea id="response-input" style="resize:none; width: 95%; padding-left: 10px;" rows="1" (keyup)="autoGrow()" placeholder="Response" [(ngModel)]="currentResponse" #textArea></textarea>
-        <img id="submit-resp" style="position: relative; bottom: 13px;"(click)="handleResponses()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA7UlEQVRIidXVsUpDMRTG8V9toUi7q2C1KtZB6Yv0CXQRKU7uTr6LuAo+i7g6Ch1UBHUtbV1u4VJyS+zNHfrBgZATvn9ySE5Yd9UDcycY4Bs/qYFDTDHDGPc4Sgn4zMzzkRS0aJ6PCR7RqwqQBBQDKAX6DyAKtHhNR3jGG37RQBu1JZuq4RQ3OMMLvvLJvM4DBk10sI9uNu5gswA4xjUeYgEhbWALfVwG8u/Yni8so6LSzeaDRoTJKiW6LQK0sIuDLA6xI+6kUzzhDq9Fi5Jf0zKAyh5aZa0iSbP7CBgnbddXKv5w4BgX2EttvJ76A3vKiHKhqFQ/AAAAAElFTkSuQmCC"/>
+      <div id="resp-input-container">
+        <textarea id="response-input" rows="1" (keyup)="autoGrow()" placeholder="Response" [(ngModel)]="currentResponse" #textArea></textarea>
+        <div id="submit-resp" (click)="handleResponses()">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M148.92333,100.19l-102.62667,51.31333c-11.395,5.66167 -24.79667,-2.65167 -24.79667,-15.33667v-28.66667l89.01,-16.69833c5.375,-1.00333 5.375,-8.6 0,-9.60333l-89.01,-16.69833v-28.66667c0,-12.685 13.40167,-20.99833 24.79667,-15.33667l102.62667,51.31333c11.68167,5.87667 11.68167,22.50333 0,28.38z"></path><path d="M134.23883,86l-112.73883,34.873v-69.746z" opacity="0.35"></path></g></g></svg>
+        </div>
       </div>
-      <!-- <div id="submit-resp" style="text-align:center; border: 1px solid black; margin-top: 30px;" (click)="handleResponses()">Reply</div> -->
   </div>
 </div>
