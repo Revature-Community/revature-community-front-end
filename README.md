@@ -4,43 +4,51 @@
 
 ## Project Description
 
-Here goes your awesome project description!
+The project aims at providing a place for revature employee's to post or ask questions about things to do in particular locations. The project aims at connecting the revature employees on 4 basic categories: Housing, Entertainment, Food, and Events.
+
+
 
 ## Technologies Used
 
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* Java
+* Hibernate
+* Angular
+* JUnit
+* Log4J
+* Maven
+* PostgreSQL
+* RDS
+* Jenkins
+* Docker
 
 ## Features
 
 List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+
+* As a User, I should be able to filter posts by some number of locations to limit the posts I'm seeing to the location(s) I'm interested in.
+* As a User, I should be able to submit a new Location (City and State) tracked by Revature Community that can have posts submitted under.
+* As a User, I should be able to add a reply to a post.
+* As a User, I should be able to submit a Post with a title and a brief description. This Post is required to have both a Location and a Category.
+* As a User, I should be able to filter posts by some number of categories to limit the posts I'm seeing to the categories I'm interested in.
 
 To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+* As a User, I should be able to sort posts by newest so that I can see what has been posted recently.
+* As a user, I should be able to upvote or downvote a post such that the community as a whole can decide how good a post is.
+* As an Admin I should be able to remove a post so that it is no longer visible through the UI, along with a reason the post was removed for the User to see.
+* As an Admin I should be able to remove a location from the tracked locations, and I should be able to either transfer all posts from that location to another, or remove the posts entirely.
 
 ## Getting Started
    
-(include git clone command)
-(include all environment setup steps)
+- back end git clone `https://github.com/revaturelabs/revature-community-backend.git`
+- front end git clone `https://github.com/revaturelabs/revature-community-frontend.git`
 
-> Be sure to include BOTH Windows and Unix command  
-> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
+<!-- ## Usage
 
-- All the `code` required to get started
-- Images of what it should look like
-
-## Usage
-
-> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action. -->
 
 ## Contributors
 
-> Here list the people who have contributed to this project. (ignore this section, if its a solo project)
+> Juan Alcantara, Will Alexander, Edward Artacho, Edward Aylott, David Carillo, Christian Cherry, Rodrigo Flores, Tevin Gray, Alfonso Guaderrama, Gabe Harper, Isaak Jensen, Robert Keisling, Brian Kinney, Jun Lei, Trevor Mulrenin, Max Nicholai, Larissa Santos, Jameson Bryant
 
 ## License
 
@@ -50,7 +58,7 @@ This project uses the following license: [<license_name>](<link>).
 
 <!-- v2 -->
 <!--# RevatureCommunity
-Frontend
+Backend
 
 ![Project Image](project-image-url)
 
@@ -65,7 +73,6 @@ Frontend
   - [Technologies Used](#technologies-used)
   - [Features](#features)
   - [Getting Started](#getting-started)
-  - [Usage](#usage)
   - [Contributors](#contributors)
   - [License](#license)
 

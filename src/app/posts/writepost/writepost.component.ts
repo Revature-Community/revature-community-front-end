@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Locations } from 'src/app/models/locations';
 import { Posts } from 'src/app/models/posts';
 import { PostsService } from 'src/app/posts.service';
 
@@ -14,8 +15,17 @@ export class WritepostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  randomPost: Posts = {title: 'Project 3', content: 'random stuff', location: '{}', categoryType: 'Housing'}
+  randomLocation: Locations= {id:1, location:"test"};
+
+  randomPost: Posts = {
+    title: "hi", 
+    content:"hello there", 
+    location: this.randomLocation, 
+    categoryType: "Housing"
+  }
+  
   submitPost(){
+    console.log(this.randomPost)
     this._post.submitPost(this.randomPost).subscribe(data => {
       console.log(data);
     })
