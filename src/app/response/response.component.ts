@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { RepliesService } from '../services/replies.service';
 
 @Component({
   selector: 'app-reponse',
@@ -7,28 +8,24 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 })
 export class ResponseComponent implements OnInit {
   
-  constructor() { }
+  constructor(private repliesService: RepliesService) { }
   @Input() postId: number | any;
   @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef | any;
   responses:any = [];
   responseData:any = [];
   currentResponse:any;
   ngOnInit(): void {
-    console.log(this.postId);
-    const data = [
-      {id: 1, content: "hello world", author: "", location: "place 1", post_id: 1},
-      {id: 2, content: "this is a reply this is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis is a third replythis", author: "", location: "place 1",  post_id: 1},
-      {id: 3, content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A cras semper auctor neque vitae tempus. Pellentesque id nibh tortor id aliquet lectus proin. Pharetra pharetra massa massa ultricies mi quis hendrerit dolor magna. Duis ultricies lacus sed turpis tincidunt. Semper eget duis at tellus at urna condimentum. Eget aliquet nibh praesent tristique magna sit. Metus aliquam eleifend mi in nulla posuere sollicitudin. Ipsum a arcu cursus vitae congue mauris rhoncus. Dignissim cras tincidunt lobortis feugiat vivamus at. Sed euismod nisi porta lorem mollis aliquam. Quis vel eros donec ac odio tempor orci dapibus ultrices. Habitant morbi tristique senectus et netus. Sed cras ornare arcu dui vivamus arcu.", author: "", location: "place 1",  post_id: 1}
-    ]
-    this.responseData = data;
-    for (let val of data) {
-      let lenless255 = false;
-      if (val.content.length > 255) {
-        lenless255 = true;
+    this.repliesService.getReplies(this.postId).subscribe(res => {
+      this.responseData = res;
+      for (let val of this.responseData) {
+        let lenless255 = false;
+        if (val.content.length > 255) {
+          lenless255 = true;
+        }
+        const resp = {id: val.id, response: val.content, show: !lenless255};
+        this.responses.push(resp);
       }
-      const resp = {id: val.id, response: val.content, show: !lenless255};
-      this.responses.push(resp);
-    }
+    })
   }
 
   handleResponses() {
@@ -37,10 +34,11 @@ export class ResponseComponent implements OnInit {
     if (this.currentResponse.length > 255) {
       lenless255 = true;
     }
-    const postId = this.responseData[0].post_id;
-    const newPost = {id: this.responses.length+1, response: this.currentResponse, post_id: this.postId, show: !lenless255};
-    this.responses.push(newPost);
-    this.currentResponse = "";
+    const replyData = {postId: this.postId, content : this.currentResponse};
+    this.repliesService.postReply(replyData).subscribe(res => {
+      this.responses.push({id: res.id, response: res.content, post_id: res.postId, show: res.content.length < 255});
+      this.currentResponse = "";
+    })
   }
 
   changeParam(id:number){
