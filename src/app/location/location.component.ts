@@ -16,12 +16,12 @@ export class LocationComponent implements OnInit {
 
     // Implement validation based upon actual city names
 
-    locationinput: string; 
-    Location = new Loc;
+    location = new Loc;
+    allLocations: string = "all";
 
     locationdata: any = []; 
 
-    Locations = ["Alaska",
+    states = ["Alaska",
     "Alabama",
     "Arkansas",
     "American Samoa",
@@ -77,10 +77,6 @@ export class LocationComponent implements OnInit {
     "West Virginia",
     "Wyoming"]
 
-    onKey (event: any) {
-	this.locationinput = event.target.value;
-    }
-
     getData(){
       const url ='http://localhost:8085/locations/'
       this.http.get(url).subscribe((res)=>{
@@ -89,17 +85,22 @@ export class LocationComponent implements OnInit {
       })
     }
 
-  constructor(private http: HttpClient, private _httpservice:LocationService, private router:Router) { }
+  constructor(private http: HttpClient, private _httpservice:LocationService, private router:Router) { } 
 
   ngOnInit(): void {
     this.getData();
   }
 
   addLocation() {
-    this._httpservice.saveLocation(this.Location).subscribe((data:any) => {
-      this.Location = data; 
+    this._httpservice.saveLocation(this.location).subscribe((data:any) => {
+      this.location = data; 
     })
-    this.Location = new Loc; 
-  } 
+    this.location = new Loc; 
+  }
+
+  switch() {
+    if (this.allLocations.match("all")) { this.allLocations = "create" }
+    else if (this.allLocations.match("create")) { this.allLocations = "all" }
+  }
     
 }

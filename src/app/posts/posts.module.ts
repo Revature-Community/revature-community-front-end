@@ -5,6 +5,8 @@ import { WritepostComponent } from './writepost/writepost.component';
 import { ReadpostComponent } from './readpost/readpost.component';
 import { PostsService } from '../posts.service';
 import { FormsModule } from '@angular/forms';
+import { ResponseComponent } from '../response/response.component';
+import { ResponsePipePipe } from '../response-pipe.pipe';
 
 
 
@@ -12,7 +14,9 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     WritepostComponent,
-    ReadpostComponent
+    ReadpostComponent,
+    ResponsePipePipe,
+    ResponseComponent
     
   ],
   imports: [

@@ -11,14 +11,12 @@ export class ReadpostComponent implements OnInit {
 
   constructor(private _posts:PostsService) { }
 
-
   postList: Array<Posts>=[]
-
 
   ngOnInit(): void {
     this._posts.getPosts().subscribe(data=>{
       this.postList= data;
+      console.log(data);
     })
   }
-
 }
