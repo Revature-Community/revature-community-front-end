@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../location.service';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-location',
@@ -15,11 +16,21 @@ export class LocationComponent implements OnInit {
     onKey (event: any) {
 	this.locationinput = event.target.value;
     }
+    getData(){
+      const url ='http://localhost:8085/locations/'
+      this.http.get(url).subscribe((res)=>{
+        this.locations = res
+        console.log(this.locations)
+      })
+    }
 
-    constructor() { }
+    public locations:any = []
+  constructor(private http: HttpClient) {
+    
+  }
 
   ngOnInit(): void {
-
+    this.getData();
   }
 
 }
