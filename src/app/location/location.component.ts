@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationService } from '../location.service';
+
 import { Loc } from '../models/location';
+
+import { HttpClient } from "@angular/common/http";
+
 
 @Component({
   selector: 'app-location',
@@ -14,6 +18,8 @@ export class LocationComponent implements OnInit {
 
     locationinput: string; 
     Location = new Loc;
+
+    locationdata: any = []; 
 
     Locations = ["Alaska",
     "Alabama",
@@ -75,14 +81,22 @@ export class LocationComponent implements OnInit {
 	this.locationinput = event.target.value;
     }
 
-  constructor(private _http:LocationService, private router:Router) { }
+    getData(){
+      const url ='http://localhost:8085/locations/'
+      this.http.get(url).subscribe((res)=>{
+        this.locationdata = res
+        console.log(this.locationdata)
+      })
+    }
+
+  constructor(private http: HttpClient, private _httpservice:LocationService, private router:Router) { }
 
   ngOnInit(): void {
-
+    this.getData();
   }
 
   addLocation() {
-    this._http.saveLocation(this.Location).subscribe((data:any) => {
+    this._httpservice.saveLocation(this.Location).subscribe((data:any) => {
       this.Location = data; 
     })
     this.Location = new Loc; 
