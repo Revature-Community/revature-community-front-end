@@ -1,6 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
+import { Loc } from './models/location';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +11,42 @@ export class LocationService {
   baseurl='localhost:8085/locations/'
   constructor(private http:HttpClient) {}
 
-  httpOptions={
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
+  //POST
+  saveLocation(location: Loc): Observable<Loc> { 
+    return this.http.post<Loc>(this.baseurl + "add/" + location.city + "/" + location.state, location)
   }
 
-  findLocation(locationId: number): Observable<Location> {
-    return this.http.get<Location>(`${this.baseurl}${locationId}`);
+   // GET
+ GetLocations(): Observable<Loc> {
+  return this.http.get<Loc>(this.baseurl)
+  .pipe(
+    retry(1),
+    catchError(this.errorHandl)
+  )
+}
+
+// GET BY ID
+GetLocation(id: any): Observable<Loc> {
+  return this.http.get<Loc>(this.baseurl + id)
+  .pipe(
+    retry(1),
+    catchError(this.errorHandl)
+  )
+}
+
+// Error handling
+errorHandl(error: any) {
+  let errorMessage = '';
+  if(error.error instanceof ErrorEvent) {
+    // Get client-side error
+    errorMessage = error.error.message;
+  } else {
+    // Get server-side error
+    errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
   }
+  console.log(errorMessage);
+  return throwError(errorMessage);
+}
+
+
 }

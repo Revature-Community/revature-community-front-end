@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { PostsService } from './posts.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +6,8 @@ import { PostsService } from './posts.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // title = 'RevatureCommunity';
-  // todaydate;
-  // constructor(private postsservice: PostsService){}
-  // ngOnInit() {
-  //   this.todaydate = this.postsservice.showTodayDate();
-  // }
-  constructor(){ }
-  ngOnInit(){}
+
+  constructor() {}
+  ngOnInit() {}
+
 }
