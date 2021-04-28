@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PostsModule } from './posts/posts.module';
 import { LandingComponent } from './landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PostsService } from './posts.service';
 
           
 @NgModule({

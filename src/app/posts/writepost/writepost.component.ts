@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { Locations } from 'src/app/models/locations';
-=======
->>>>>>> d76aa66d2576522c4ec6097f4b418d6be90b4fdf
 import { Posts } from 'src/app/models/posts';
 import { PostsService } from 'src/app/posts.service';
 
@@ -18,25 +14,6 @@ export class WritepostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-<<<<<<< HEAD
-  randomLocation: Locations= {id:2};
-
-  randomPost: Posts = {
-    title: "hi", 
-    content:"hello there", 
-    location: this.randomLocation, 
-    categoryType: "Housing"
-  }
-  
-  submitPost(){
-    console.log(this.randomPost)
-    this._post.submitPost(this.randomPost).subscribe(data => {
-      console.log(data);
-    })
-  }
-
-}
-=======
   randomPost: Posts = {title: 'Project 3', content: 'random stuff', location: '{}', categoryType: 'Housing'}
  
   // Pulled from Post Service, I recieve errors when I subscribe 
@@ -47,4 +24,3 @@ export class WritepostComponent implements OnInit {
   //}
 
 }
->>>>>>> d76aa66d2576522c4ec6097f4b418d6be90b4fdf
