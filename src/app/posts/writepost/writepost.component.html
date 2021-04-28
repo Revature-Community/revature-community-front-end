@@ -5,11 +5,8 @@
         <input type="text" class="form-control" placeholder="Title" name="Title" [(ngModel)]="title" required />
     </div>
     <label for="location">Location:</label> 
-    <select name="location" id="location" [(ngModel)]="this.locationValue"> 
-      <option value="1">Location1</option> 
-      <option value="2">Location2</option> 
-      <option value="3">Location3</option> 
-      <option value="4">Location4</option>
+    <select [(ngModel)]="this.locationValue" name="location" id="location"> 
+      <option *ngFor = "let l of Locations; index as locationValue" [value] = "locationValue" >{{l}}</option> 
     </select>
     <div class="form-group">
         <label>Content: </label>
