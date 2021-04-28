@@ -7,13 +7,8 @@ import { PostsService } from './posts.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // title = 'RevatureCommunity';
-  // todaydate:any;
 
-  //This was in the constructor why? (private postsservice: PostsService)
-  constructor(){}
-  ngOnInit() {
-    // this.todaydate = this.postsservice.showTodayDate();
-  }
+  constructor() {}
+  ngOnInit() {}
 
 }
