@@ -16,18 +16,19 @@ export class LocationComponent implements OnInit {
     onKey (event: any) {
 	this.locationinput = event.target.value;
     }
-    getData(){
-      const url ='http://localhost:8085/locations/'
-      this.http.get(url).subscribe((res)=>{
-        this.locations = res
-        console.log(this.locations)
-      })
-    }
 
     public locations:any = []
   constructor(private http: HttpClient) {
     
   }
+
+  getData(){
+    const url ='http://localhost:8085/locations/'
+    this.http.get(url).subscribe((res)=>{
+      this.locations = res
+      console.log(this.locations)
+    })
+  }  
 
   ngOnInit(): void {
     this.getData();
