@@ -14,22 +14,78 @@ export class WritepostComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  randomLocation: Locations= {id:2};
-
-  randomPost: Posts = {
-    title: "hi", 
-    content:"hello there", 
-    location: this.randomLocation, 
-    categoryType: "Housing"
-  }
-  
+  title: string = '';
+  content: string = '';
+  locationValue: number = 0;
+  categoryType: string = '';
+  randomLocation: Locations = new Locations(this.locationValue)
+  randomPost: Posts = {title: this.title, content: this.content, location: this.randomLocation, categoryType: this.categoryType}
+ 
   submitPost(){
-    console.log(this.randomPost)
+    this.randomLocation= new Locations(++this.locationValue);
+    this.randomPost = {title: this.title, content: this.content, location: this.randomLocation, categoryType: this.categoryType}
+
+    console.log(this.randomPost);
+    console.log(this.locationValue);
     this._post.submitPost(this.randomPost).subscribe(data => {
       console.log(data);
     })
   }
 
-}
+  Locations = ["Alaska",
+    "Alabama",
+    "Arkansas",
+    "American Samoa",
+    "Arizona",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "District of Columbia",
+    "Delaware",
+    "Florida",
+    "Georgia",
+    "Guam",
+    "Hawaii",
+    "Iowa",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Massachusetts",
+    "Maryland",
+    "Maine",
+    "Michigan",
+    "Minnesota",
+    "Missouri",
+    "Mississippi",
+    "Montana",
+    "North Carolina",
+    "North Dakota",
+    "Nebraska",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "Nevada",
+    "New York",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Pennsylvania",
+    "Puerto Rico",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Virginia",
+    "Virgin Islands",
+    "Vermont",
+    "Washington",
+    "Wisconsin",
+    "West Virginia",
+    "Wyoming"]
 
+}
