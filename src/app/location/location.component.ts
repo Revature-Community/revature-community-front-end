@@ -101,6 +101,7 @@ export class LocationComponent implements OnInit {
     this._httpservice.saveLocation(location).subscribe((data: any) => {
       location = data;
     });
+    //this.location = new Loc();
   }
 
   switch() {
