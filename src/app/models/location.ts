@@ -1,4 +1,4 @@
 export class Loc {
-    id: number; 
-    location: string; 
+    id: number | any; 
+    location: string | any; 
 }
