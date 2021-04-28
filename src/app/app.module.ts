@@ -32,6 +32,7 @@ import { PostsService } from './posts.service';
     HttpClientModule,
     PostsModule,
     NgbModule
+    
   ],
   providers: [ResponsePipePipe, PostsService],
   bootstrap: [AppComponent]
