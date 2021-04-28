@@ -13,6 +13,8 @@ export class ResponseComponent implements OnInit {
   @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef | any;
   responses:any = [];
   currentResponse:any;
+  displayOptions:Boolean = false;
+  toggl:any;
   ngOnInit(): void {
     this.repliesService.getReplies(this.postId).subscribe(res => {
       for (let val of res) {
@@ -25,6 +27,10 @@ export class ResponseComponent implements OnInit {
       }
     })
   }
+
+displayMenu(){
+  this.displayOptions = !this.displayOptions;
+}
 
   handleResponses() {
     let lenless255 = false;
