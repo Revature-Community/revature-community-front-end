@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { Locations } from 'src/app/models/locations';
-=======
->>>>>>> d76aa66d2576522c4ec6097f4b418d6be90b4fdf
 import { Posts } from 'src/app/models/posts';
 import { PostsService } from 'src/app/posts.service';
 
