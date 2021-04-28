@@ -29,7 +29,7 @@ var faker = require ("faker");
 var database = { cities: [] };
 
 for (var i = 1; i <= 100; i++) {
-    database.cities.push ({ city: faker.address.city () });
+    database.cities.push ({ id: i, city: faker.address.city () });
 }
 
 console.log (JSON.stringify(database));
