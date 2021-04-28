@@ -5,7 +5,7 @@ export class Posts {
     // public id: number,
     public title: string,
     public content: string,
-    public location: Locations, //change to location type later
+    public location: Locations, 
     public categoryType: string //change to category type later
 )
 {}}
