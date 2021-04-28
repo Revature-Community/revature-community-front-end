@@ -10,6 +10,8 @@ import { LocationComponent } from './location/location.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { FooterComponent } from './footer/footer.component';
 import { PostsModule } from './posts/posts.module';
+import { LandingComponent } from './landing/landing.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
           
 @NgModule({
@@ -19,14 +21,16 @@ import { PostsModule } from './posts/posts.module';
     ResponsePipePipe,
     LocationComponent,
     TopnavComponent,
-    FooterComponent
+    FooterComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    PostsModule
+    PostsModule,
+    NgbModule
   ],
   providers: [ResponsePipePipe],
   bootstrap: [AppComponent]
