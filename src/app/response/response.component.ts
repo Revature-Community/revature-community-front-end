@@ -36,6 +36,9 @@ export class ResponseComponent implements OnInit {
     this.repliesService.postReply(replyData).subscribe(res => {
       this.responses.push({id: res.id, response: res.content, post_id: res.postId, show: res.content.length < 255});
       this.currentResponse = "";
+      const textArea = this.textArea.nativeElement;
+      textArea.style.overflow = 'hidden';
+      textArea.style.height = '36px';
     })
   }
 

@@ -7,15 +7,8 @@ import { PostsService } from './posts.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // title = 'RevatureCommunity';
-  // todaydate!: Date;
-  // constructor(private postsservice: PostsService){}
-  // ngOnInit() {
-  //   this.todaydate = this.postsservice.showTodayDate();
-  // }
 
   constructor() {}
-
   ngOnInit() {}
 
 }
