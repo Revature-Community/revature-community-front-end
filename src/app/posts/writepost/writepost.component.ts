@@ -22,7 +22,7 @@ export class WritepostComponent implements OnInit {
   randomPost: Posts = {title: this.title, content: this.content, location: this.randomLocation, categoryType: this.categoryType}
  
   submitPost(){
-    this.randomLocation= new Locations(this.locationValue++);
+    this.randomLocation= new Locations(++this.locationValue);
     this.randomPost = {title: this.title, content: this.content, location: this.randomLocation, categoryType: this.categoryType}
 
     console.log(this.randomPost);
