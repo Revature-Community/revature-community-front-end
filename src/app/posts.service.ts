@@ -11,10 +11,7 @@ export class PostsService {
   constructor(private http:HttpClient) { }
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})}
   submitPost(posts: Posts): Observable <Posts> {
-    return this.http.post<any>(this.baseUrl + 'addPost', posts);
+   
+    return this.http.post<Posts>(this.baseUrl+"addPost", posts);
   }
-  // showTodayDate() {
-  //   let ndate = new Date ();
-  //   return ndate;
-  // }
 }
