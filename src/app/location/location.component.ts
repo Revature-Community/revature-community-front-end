@@ -83,8 +83,9 @@ export class LocationComponent implements OnInit {
 
   addLocation() {
     this._http.saveLocation(this.Location).subscribe((data:any) => {
-      this.locationinput = data; 
+      this.Location = data; 
     })
+    this.Location = new Loc; 
   } 
     
 }

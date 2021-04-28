@@ -14,7 +14,7 @@ export class LocationService {
 
   //POST
   saveLocation(location: Loc): Observable<object> { 
-    return this._http.post(this.baseUrl + "add/" + location.city + location.state, location)
+    return this._http.post(this.baseUrl + "add/" + location.city + "/" + location.state, location)
   }
 
 
