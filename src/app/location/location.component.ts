@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationService } from '../location.service';
-import { SimpleChanges } from '@angular/core';
 import { LocationRec } from '../location-rec.model';
 import { Observable } from 'rxjs';
+import { LocationDBConnectorService } from '../locationdbconnector.service';
 
 @Component({
   selector: 'app-location',
@@ -13,7 +12,7 @@ import { Observable } from 'rxjs';
 export class LocationComponent implements OnInit {
 
     
-    title = "Location Component and Service Demo";
+    title = "Location Component and LocationDBConnector Demo";
     locationinput: string = "";
     cities = new Array<LocationRec>();
     error: boolean = false;
@@ -22,8 +21,8 @@ export class LocationComponent implements OnInit {
 	this.locationinput = event.target.value;
     }
 
-    constructor(private locationService: LocationService) {
-	this.locationService.getAllLocations ().subscribe (data => 
+    constructor(private locationService: LocationDBConnectorService) {
+	this.locationService.getAll ().subscribe (data => 
 	    { this.cities = data.map (item => { return new LocationRec (item.city); });})
     }
 

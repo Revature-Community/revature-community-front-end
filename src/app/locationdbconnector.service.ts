@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
   providedIn: 'root'
 })
 
-export class LocationService {
+export class LocationDBConnectorService {
 
     // 
     // The json-server docs describe the GET attributes:

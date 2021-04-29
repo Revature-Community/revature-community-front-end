@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class MockLocationService {
+export class MockLocationDBConnectorService {
     // constructor (private www: HttpClient) {}
     constructor () {}
 
@@ -19,7 +19,7 @@ export class MockLocationService {
 	{ city: 'Chicago' }
     ];
 
-    public getAllLocations (): Observable<LocationRec[]> {
+    public getAll (): Observable<LocationRec[]> {
 	return this.fakeLocations;
     }
 
