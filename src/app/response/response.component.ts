@@ -17,11 +17,13 @@ export class ResponseComponent implements OnInit {
   toggl:any;
   editButton:Boolean = false;
   ngOnInit(): void {
-    this.repliesService.getReplies(this.postId).subscribe(res => {
+   
+   this.repliesService.getReplies(this.postId).subscribe(res => {
       for (let val of res) {
         let lenless255 = false;
         if (val.content.length > 255) {
           lenless255 = true;
+          console.log(res);
         }
         const resp = {id: val.id, response: val.content, show: !lenless255};
         this.responses.push(resp);

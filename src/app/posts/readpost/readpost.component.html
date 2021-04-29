@@ -1,1 +1,9 @@
 <p>readpost works!</p>
+<div *ngFor="let post of postList" style="color: black;">
+    <div class="card">
+        <div style="text-align: center; border-bottom: 1px solid white; height: 5rem;">
+            {{post.title}} -- {{post.content}} --- {{post.location.id}}
+        </div>
+        <app-reponse [postId]=1></app-reponse>  
+    </div>
+</div> 

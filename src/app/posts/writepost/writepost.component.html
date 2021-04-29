@@ -1,27 +1,103 @@
-<p>writepost works!</p>
-<form action="readpost" method="get">
-    <div class="form-group">
-        <label>Title: </label>
-        <input type="text" class="form-control" placeholder="Title" name="Title" required />
-    </div>
-    <label for="location">Location:</label> 
-    <select name="location" id="location"> 
-      <option value="Location1">Location1</option> 
-      <option value="Location2">Location2</option> 
-      <option value="Location3">Location3</option> 
-      <option value="Location4">Loaction4</option>
+<div class="revature" [ngSwitch]="allLocations">
+  <div *ngSwitchCase="'all'">
+    <label for="locs">Choose a location:</label>
+    <select [(ngModel)]="this.locationValue" name="location" id="location">
+      <option *ngFor="let loc of locationdata" [value]="loc.id">
+        {{ loc.city }} {{ loc.state }}
+      </option>
     </select>
+    <button class="btn revature" (click)="switch()">New Location</button>
+  </div>
+  <div *ngSwitchCase="'create'">
+    <input
+      style="width: 30%"
+      [(ngModel)]="city"
+      placeholder="Enter Your City"
+    />
+    <select [(ngModel)]="state">
+      <option *ngFor="let state of states" [value]="state">
+        {{ state }}
+      </option>
+    </select>
+    <button class="btn revature" (click)="addLocation()" type="submit">
+      Add
+    </button>
+    <button class="btn revature" (click)="switch()">All Locations</button>
+  </div>
+  <form #form="ngForm" action="readpost" method="get">
     <div class="form-group">
-        <label>Description: </label>
-        <input type="text" class="form-control" placeholder="Description" name="Description" required />
+      <label>Title: </label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Title"
+        name="Title"
+        [(ngModel)]="title"
+        required
+      />
     </div>
-    <label for="category">Category:</label> 
-    <select name="category" id="category"> 
-      <option value="Housing">Housing</option> 
-      <option value="Entertainment">Entertainment</option> 
-      <option value="Food">Food</option> 
+    <label for="location">Location:</label>
+    <!-- <select [(ngModel)]="this.locationValue" name="location" id="location">
+    <option
+      *ngFor="let l of Locations; index as locationValue"
+      [value]="locationValue"
+    >
+      {{ l }}
+    </option>
+  </select> -->
+    <!-- <div class="revature" [ngSwitch]="allLocations">
+    <div *ngSwitchCase="'all'">
+      <label for="locs">Choose a location:</label>
+      <select name="locs" id="locs">
+        <option *ngFor="let loc of locationdata" [value]="loc.id">
+          {{ loc.location }}
+        </option>
+      </select>
+      <button class="btn revature" (click)="switch()">New Location</button>
+    </div>
+    <div *ngSwitchCase="'create'">
+      <input
+        style="width: 30%"
+        [(ngModel)]="city"
+        placeholder="Enter Your City"
+      />
+      <select [(ngModel)]="state">
+        <option *ngFor="let state of states" [value]="state">
+          {{ state }}
+        </option>
+      </select>
+      <button class="btn revature" (click)="addLocation()" type="submit">
+        Add
+      </button>
+      <button class="btn revature" (click)="switch()">All Locations</button>
+    </div> -->
+    <!-- </div> -->
+    <div class="form-group">
+      <label>Content: </label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="content"
+        name="content"
+        [(ngModel)]="content"
+        required
+      />
+    </div>
+    <label for="category">Category:</label>
+    <select name="categoryType" id="category" [(ngModel)]="this.categoryType">
+      <option value="Housing">Housing</option>
+      <option value="Entertainment">Entertainment</option>
+      <option value="Food">Food</option>
       <option value="Event">Event</option>
     </select>
-    <br>
-    <button class="btn btn-primary" type="submit">Submit</button>
-</form>
+    <br />
+    <button
+      class="btn btn-primary"
+      type="button"
+      (click)="submitPost()"
+      (submit)="submitPost()"
+    >
+      Submit
+    </button>
+  </form>
+</div>
