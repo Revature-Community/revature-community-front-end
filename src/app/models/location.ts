@@ -7,4 +7,5 @@ export class Loc {
     this.city = city;
     this.state = state;
   }
+
 }
