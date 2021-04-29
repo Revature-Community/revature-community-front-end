@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ComponentFixtureAutoDetect } from '@angular/core/testing';
 import { RepliesService } from '../services/replies.service';
 
 @Component({
@@ -14,16 +15,15 @@ export class ResponseComponent implements OnInit {
   responses:any = [];
   currentResponse:any;
   displayOptions:Boolean = false;
+  editedResponse:any;
   toggl:any;
   editButton:Boolean = false;
   ngOnInit(): void {
-   
-   this.repliesService.getReplies(this.postId).subscribe(res => {
+    this.repliesService.getReplies(this.postId).subscribe(res => {
       for (let val of res) {
         let lenless255 = false;
         if (val.content.length > 255) {
           lenless255 = true;
-          console.log(res);
         }
         const resp = {id: val.id, response: val.content, show: !lenless255};
         this.responses.push(resp);
@@ -55,12 +55,23 @@ displayMenu(){
     document.getElementById("res"+this.toggl).contentEditable = "true";
   }
 
-  submitUpdateReply(id){
-    
-    this.responses.content = document.getElementById("res"+this.toggl)
-    this.responses.id = this.responses.attributes['id'].value
 
-    this.repliesService.updateReply(this.responses)
+  disableEdit(id){
+    document.getElementById("res"+id).contentEditable = "false";
+  }
+
+  submitUpdateReply(){
+    const reply = {id: this.responses[this.toggl].id, content: document.getElementById("res"+this.toggl).innerHTML, postId: this.postId, userId: 1}
+    this.repliesService.updateReply(reply).subscribe(res => {
+    })
+    this.disableEdit(this.toggl)
+  }
+
+  submitDelete(){
+    let rem = document.getElementById("box"+this.toggl)
+    this.repliesService.deleteReply(this.responses[this.toggl].id).subscribe(res => {
+    })
+    rem.remove();
   }
 
   changeParam(id:number){
