@@ -1,11 +1,13 @@
 <div class="revature" [ngSwitch]="allLocations">
   <div *ngSwitchCase="'all'">
-    <label for="locs">Choose a location:</label>
-    <select [(ngModel)]="this.locationValue" name="location" id="location">
-      <option *ngFor="let loc of locationdata" [value]="loc.id">
+    <label for="location">Location:</label>
+    <!-- <label for="locs">Choose a location:</label> -->
+    <select [(ngModel)]="this.locationForPosts" name="location" id="location">
+      <option *ngFor="let loc of locationdata" value="{{loc.id}}">
         {{ loc.city }} {{ loc.state }}
       </option>
     </select>
+    <!-- <button class="btn revature" (click)="addLocationToPost()">Add Location to Post</button> -->
     <button class="btn revature" (click)="switch()">New Location</button>
   </div>
   <div *ngSwitchCase="'create'">
@@ -36,7 +38,7 @@
         required
       />
     </div>
-    <label for="location">Location:</label>
+    
     <!-- <select [(ngModel)]="this.locationValue" name="location" id="location">
     <option
       *ngFor="let l of Locations; index as locationValue"
@@ -95,7 +97,6 @@
       class="btn btn-primary"
       type="button"
       (click)="submitPost()"
-      (submit)="submitPost()"
     >
       Submit
     </button>

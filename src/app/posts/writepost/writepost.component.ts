@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from 'src/app/location.service';
-import { Locations } from 'src/app/models/locations';
+
 import { Loc } from '../../models/location';
 import { Posts } from 'src/app/models/posts';
 import { PostsService } from 'src/app/posts.service';
 import { HttpClient } from '@angular/common/http';
+import { Locations } from 'src/app/models/locations';
 
 @Component({
   selector: 'app-writepost',
@@ -12,6 +13,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./writepost.component.css'],
 })
 export class WritepostComponent implements OnInit {
+
+  locationForPosts : number = 0;
+
   constructor(
     private http: HttpClient,
     private _post: PostsService,
@@ -24,28 +28,30 @@ export class WritepostComponent implements OnInit {
   }
   title: string = '';
   content: string = '';
-  locationValue: number = 0;
   categoryType: string = '';
-  randomLocation: Locations = new Locations(this.locationValue);
-  randomPost: Posts = {
+  
+  userPost: Posts = {
     title: this.title,
     content: this.content,
-    location: this.randomLocation,
+    locationId: new Locations(0),
     categoryType: this.categoryType,
   };
 
   submitPost() {
-    this.randomLocation = new Locations(++this.locationValue);
-    this.randomPost = {
+    let postLocation = new Locations(this.locationForPosts, "")
+    this.userPost = {
       title: this.title,
       content: this.content,
-      location: this.randomLocation,
+      locationId: postLocation,
       categoryType: this.categoryType,
     };
 
-    console.log(this.randomPost);
-    console.log(this.locationValue);
-    this._post.submitPost(this.randomPost).subscribe(data => {
+    // Console loggin info
+    console.log(this.userPost);
+    console.log(this.locationForPosts);
+    // console.log("City: "+this.locationForPosts.city);
+    // console.log("State: "+this.locationForPosts.state);
+    this._post.submitPost(this.userPost).subscribe(data => {
       console.log(data);
     });
   }
@@ -118,7 +124,7 @@ export class WritepostComponent implements OnInit {
     let location = new Loc(this.city, this.state);
     console.log(location);
     this._location.saveLocation(location).subscribe((data: any) => {
-      location = data;
+      this.locationForPosts = data;
     });
   }
 
@@ -138,61 +144,10 @@ export class WritepostComponent implements OnInit {
     });
   }
 
-  // Locations = [
-  //   'Alaska',
-  //   'Alabama',
-  //   'Arkansas',
-  //   'American Samoa',
-  //   'Arizona',
-  //   'California',
-  //   'Colorado',
-  //   'Connecticut',
-  //   'District of Columbia',
-  //   'Delaware',
-  //   'Florida',
-  //   'Georgia',
-  //   'Guam',
-  //   'Hawaii',
-  //   'Iowa',
-  //   'Idaho',
-  //   'Illinois',
-  //   'Indiana',
-  //   'Kansas',
-  //   'Kentucky',
-  //   'Louisiana',
-  //   'Massachusetts',
-  //   'Maryland',
-  //   'Maine',
-  //   'Michigan',
-  //   'Minnesota',
-  //   'Missouri',
-  //   'Mississippi',
-  //   'Montana',
-  //   'North Carolina',
-  //   'North Dakota',
-  //   'Nebraska',
-  //   'New Hampshire',
-  //   'New Jersey',
-  //   'New Mexico',
-  //   'Nevada',
-  //   'New York',
-  //   'Ohio',
-  //   'Oklahoma',
-  //   'Oregon',
-  //   'Pennsylvania',
-  //   'Puerto Rico',
-  //   'Rhode Island',
-  //   'South Carolina',
-  //   'South Dakota',
-  //   'Tennessee',
-  //   'Texas',
-  //   'Utah',
-  //   'Virginia',
-  //   'Virgin Islands',
-  //   'Vermont',
-  //   'Washington',
-  //   'Wisconsin',
-  //   'West Virginia',
-  //   'Wyoming',
-  // ];
+  addLocationToPost() {
+    
+
+  }
+
+
 }
