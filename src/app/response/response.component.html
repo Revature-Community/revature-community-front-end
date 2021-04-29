@@ -8,11 +8,12 @@
           <div id="res" class="response" [ngStyle]="{'display': getDisplayType(response.showMore)}">
             <div id="optionsmenu" class="options" (click) = "displayMenu(); toggl === i ? toggl = null : toggl = i">. . .
               <div id = "textmenu" class = "options"  *ngIf = "displayOptions && toggl === i">
-                <p class = "clickable" style = "color:black">Edit</p>
+                <p class = "clickable" style = "color:black" (click) = "editReply(); editButton = true">Edit</p>
                 <p class = "clickable" style = "color:black">Delete</p>
               </div>
             </div>
-            <span>{{response.response | responsePipe:response.show}}</span>
+            <span id="res{{i}}">{{response.response | responsePipe:response.show}}</span>
+            <br><button *ngIf = "editButton" (click)="submitUpdateReply(response.id)">submit</button>
             <span class="show-more" *ngIf="!response.show" (click)="changeParam(response.id)"> ...Show More</span>
           </div>
       </div>

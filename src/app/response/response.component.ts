@@ -15,6 +15,7 @@ export class ResponseComponent implements OnInit {
   currentResponse:any;
   displayOptions:Boolean = false;
   toggl:any;
+  editButton:Boolean = false;
   ngOnInit(): void {
     this.repliesService.getReplies(this.postId).subscribe(res => {
       for (let val of res) {
@@ -46,6 +47,18 @@ displayMenu(){
       textArea.style.overflow = 'hidden';
       textArea.style.height = '36px';
     })
+  }
+
+  editReply(){
+    document.getElementById("res"+this.toggl).contentEditable = "true";
+  }
+
+  submitUpdateReply(id){
+    
+    this.responses.content = document.getElementById("res"+this.toggl)
+    this.responses.id = this.responses.attributes['id'].value
+
+    this.repliesService.updateReply(this.responses)
   }
 
   changeParam(id:number){
