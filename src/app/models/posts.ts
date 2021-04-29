@@ -1,10 +1,11 @@
+import { Loc } from "./location";
 import { Locations } from "./locations";
 
 export class Posts {
     constructor(
     public title: string,
     public content: string,
-    public location: Locations, //change to location type later
+    public locationId: Locations, //change to location type later
     public categoryType: string, //change to category type later
     public id?: number
 )
