@@ -15,7 +15,7 @@ export class RepliesService {
     })
   }
 
-  getReplies(postId: number): Observable<any> {
+  getReplies(postId: Object): Observable<any> {
     return this.http.get<any>(this.baseUrl + postId)
     .pipe(
       retry(1),
@@ -50,6 +50,38 @@ export class RepliesService {
 
   deleteReply(id: number): Observable<any> {
     return this.http.delete<any>(this.baseUrl + "delete/" + id)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
+  }
+
+  upvoteReply(reply:object): Observable<any>{
+    return this.http.post<any>("http://localhost:8085/upvote/add-upvote/", reply)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
+  }
+
+  getUpvotes(id: number): Observable<any>{
+    return this.http.get<any>("https://localhost:8085/upvote/"+id)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
+  }
+
+  getDownvotes(id: number): Observable<any>{
+    return this.http.get<any>("https://localhost:8085/downvotes/"+id)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
+  }
+
+  downvoteReply(reply:object): Observable<any>{
+    return this.http.post<any>("http://localhost:8085/downvotes/add-downvote", reply)
     .pipe(
       retry(1),
       catchError(this.errorHandler)

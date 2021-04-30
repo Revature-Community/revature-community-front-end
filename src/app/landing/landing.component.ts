@@ -23,6 +23,7 @@ export class LandingComponent implements OnInit {
   validateUser(){
     this.landingService.login(this.username, this.password).subscribe(data=>{
       localStorage.setItem("userId", data.id.toString(10));
+      localStorage.setItem("username", data.username)
       localStorage.setItem("isLoggedIn", "true");
     });
   }

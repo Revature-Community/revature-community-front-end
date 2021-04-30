@@ -13,6 +13,7 @@ export class ResponseComponent implements OnInit {
   @Input() postId: number | any;
   @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef | any;
   responses:any = [];
+  voting:any = [];
   currentResponse:any;
   displayOptions:Boolean = false;
   editedResponse:any;
@@ -25,7 +26,9 @@ export class ResponseComponent implements OnInit {
         if (val.content.length > 255) {
           lenless255 = true;
         }
-        const resp = {id: val.id, response: val.content, show: !lenless255};
+        this.repliesService.getUpvotes(this.responses.id).subscribe(res =>{})
+        this.repliesService.getDownvotes(this.responses.id).subscribe(res =>{})
+        const resp = {id: val.id, response: val.content, username: val.username,show: !lenless255};
         this.responses.push(resp);
       }
     })
@@ -42,8 +45,9 @@ displayMenu(){
       lenless255 = true;
     }
     const replyData = {postId: this.postId, content : this.currentResponse};
+    console.log(replyData)
     this.repliesService.postReply(replyData).subscribe(res => {
-      this.responses.push({id: res.id, response: res.content, post_id: res.postId, show: res.content.length < 255});
+      this.responses.push({id: res.id, response: res.content, post_id: res.postId, username: localStorage.getItem("username"), show: res.content.length < 255});
       this.currentResponse = "";
       const textArea = this.textArea.nativeElement;
       textArea.style.overflow = 'hidden';
@@ -72,6 +76,18 @@ displayMenu(){
     this.repliesService.deleteReply(this.responses[this.toggl].id).subscribe(res => {
     })
     rem.remove();
+  }
+
+  upvote(){
+    this.repliesService.upvoteReply(this.responses.id).subscribe(res =>{
+      this.voting.push({postId: this.responses.postId, userId: localStorage.getItem("userId")});
+    })
+  }
+
+  downvote(){
+    this.repliesService.downvoteReply(this.responses.id).subscribe(res =>{
+      this.voting.push({postId: this.responses.postId, userId: localStorage.getItem("userId")});
+    })
   }
 
   changeParam(id:number){
