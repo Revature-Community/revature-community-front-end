@@ -22,6 +22,7 @@
 }
 
 #res {
+    position: relative;
     border: 1px solid black; 
     padding: 10px;
     margin: 10px 0px 5px 0px; 
@@ -56,4 +57,28 @@
 .show-more:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.options{
+   position: absolute;
+   top: -0.4rem;
+   right: 1rem; 
+   font-size: 13px;
+}
+#optionsmenu:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#textmenu{
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 60px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.clickable:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
