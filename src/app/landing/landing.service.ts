@@ -21,4 +21,7 @@ export class LandingService {
     }
     return this.http.post<User>(`${this.baseurl}login`, JSON.stringify(credentials), this.httpOptions)
   }
+  register(user: User) {
+    return this.http.post<Object>(`${this.baseurl}add`, JSON.stringify(user), this.httpOptions)
+  }
 }
