@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UrlSerializer } from '@angular/router';
 import { User } from '../models/user';
 import { LandingService } from './landing.service';
 
@@ -13,6 +14,8 @@ export class LandingComponent implements OnInit {
   username='';
   password='';
   email='';
+  firstName='';
+  lastName='';
   constructor(private landingService: LandingService) { }
 
   ngOnInit(): void {
@@ -25,6 +28,14 @@ export class LandingComponent implements OnInit {
   }
 
   createUser(){
-    
+    let user: User = new User();
+    user.username = this.username;
+    user.password = this.password;
+    user.email = this.email;
+    user.firstName = this.firstName;
+    user.lastName = this.lastName;
+    this.landingService.register(user).subscribe(data=>{
+      alert("Successfully registered! You may now log in.");
+    });
   }
 }
