@@ -1,9 +1,25 @@
 <p>readpost works!</p>
 <div *ngFor="let post of postList" style="color: black;">
-    <div class="card">
-        <div style="text-align: center; border-bottom: 1px solid white; height: 5rem;">
-            {{post.title}} -- {{post.content}} --- 
+    
+    <div class="card p-4">
+        <div class="" style="text-align: left; height: 15rem;">
+            <div style="border-bottom: 1px solid white;">
+                <h3 class="card-title">{{post.title}}</h3>
+                <div class="d-flex justify-content-around">
+                 <p class="card-subtitle mb-2 mr-auto">posted by: Charlemegne Smith</p> <p class="card-subtitle">{{post.categoryType}}</p>
+            </div>
+            </div>
+            <div style=" border-bottom: 1px solid white; height: 10rem;" class="p-2">
+                <p>{{post.content}}</p>
+
+            </div>
+             
+              
         </div>
-        <app-reponse [postId]=1></app-reponse>  
+        <app-reponse [postId]=1></app-reponse>
+        <!-- postId for all posts = 1? Por que? -->
+         
     </div>
+    
+
 </div> 
