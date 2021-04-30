@@ -1,29 +1,74 @@
 <div><span (click)="openNav()" style="color: white;">open (click me and change me later)</span>
-<div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" id="closebtn">&times;</a>
-    <a href="#">Location</a>
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-    aria-haspopup="true" aria-expanded="false">Category</a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <ul>
-        <li><a href="#">Housing</a></li>
-        <li><a href="#">Entertainment</a></li>
-        <li><a href="#">Food</a></li>
-        <li><a href="#">Events</a></li>
-    </ul>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" id="closebtn">&times;</a>
+        <a href="#">Location</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Category</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul>
+                <li><button (click)="listHousingPosts('Housing')" class="button">Housing</button></li>
+                <li><button (click)="listEntertainmentPosts('Entertainment')" class="button">Entertainment</button></li>
+                <li><button (click)="listFoodPosts('Food')" class="button">Food</button></li>
+                <li><button (click)="listEventPosts('Events')" class="button">Events</button></li>
+            </ul>
+        </div>
     </div>
 </div>
-</div>
+
+<!-- Little problem is that when I  try to filter the posts by one thing i.e. Food, 
+     and filter by something else, I cannot filter by food again unless refreshing 
+     Hopefully we will figure a solution soon! -->
 
 
-
-
-
-<div *ngFor="let post of postList" style="color: black;">
-    <div class="card">
-        <div style="text-align: center; border-bottom: 1px solid white; height: 5rem;">
-            {{post.title}} -- {{post.content}} --- 
+<div [ngSwitch]=view>
+    <div *ngSwitchCase="'all'">
+        <div *ngFor="let post of postList" style="color: black;">
+            <div class="card">
+                <div style="text-align: center; border-bottom: 1px solid white; height: 5rem;">
+                    {{post.title}} -- {{post.content}} --- {{post.categoryType}}
+                </div>
+                <app-reponse [postId]=1></app-reponse>
+            </div>
         </div>
-        <app-reponse [postId]=1></app-reponse>
+    </div>
+    <div *ngSwitchCase="'Food'">
+        <div *ngFor="let post of foodPosts" style="color: black;">
+            <div class="card">
+                <div style="text-align: center; border-bottom: 1px solid white; height: 5rem;">
+                    {{post.title}} -- {{post.content}} --- {{post.categoryType}}
+                </div>
+                <app-reponse [postId]=1></app-reponse>
+            </div>
+        </div>
+    </div>
+    <div *ngSwitchCase="'Housing'">
+        <div *ngFor="let post of housingPosts" style="color: black;">
+            <div class="card">
+                <div style="text-align: center; border-bottom: 1px solid white; height: 5rem;">
+                    {{post.title}} -- {{post.content}} --- {{post.categoryType}}
+                </div>
+                <app-reponse [postId]=1></app-reponse>
+            </div>
+        </div>
+    </div>
+    <div *ngSwitchCase="'Events'">
+        <div *ngFor="let post of eventPosts" style="color: black;">
+            <div class="card">
+                <div style="text-align: center; border-bottom: 1px solid white; height: 5rem;">
+                    {{post.title}} -- {{post.content}} --- {{post.categoryType}}
+                </div>
+                <app-reponse [postId]=1></app-reponse>
+            </div>
+        </div>
+    </div>
+    <div *ngSwitchCase="'Entertainment'">
+        <div *ngFor="let post of entertainmentPosts" style="color: black;">
+            <div class="card">
+                <div style="text-align: center; border-bottom: 1px solid white; height: 5rem;">
+                    {{post.title}} -- {{post.content}} --- {{post.categoryType}}
+                </div>
+                <app-reponse [postId]=1></app-reponse>
+            </div>
+        </div>
     </div>
 </div>
