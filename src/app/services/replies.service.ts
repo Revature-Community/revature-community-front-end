@@ -14,6 +14,7 @@ export class RepliesService {
       'Content-Type': 'application/json'
     })
   }
+
   getReplies(postId: number): Observable<any> {
     return this.http.get<any>(this.baseUrl + postId)
     .pipe(
@@ -21,6 +22,7 @@ export class RepliesService {
       catchError(this.errorHandler)
     )
   }
+
   postReply(reply:Object): Observable<any> {
     return this.http.post<any>(this.baseUrl + 'submit-response', reply, this.httpOptions)
     .pipe(
@@ -28,6 +30,7 @@ export class RepliesService {
       catchError(this.errorHandler)
     )
   }
+
   errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
@@ -35,5 +38,21 @@ export class RepliesService {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(errorMessage);
+  }
+
+  updateReply(reply:object): Observable<any> { 
+    return this.http.put<any>(this.baseUrl+"update", reply)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
+  }
+
+  deleteReply(id: number): Observable<any> {
+    return this.http.delete<any>(this.baseUrl + "delete/" + id)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
   }
 }
