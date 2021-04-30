@@ -1,135 +1,121 @@
 <div class="container mt-2">
-    <div class="row">
-      <div class="col-12">
-        <div class="jumbotron">
-          <h1 class="text-center">Lorem ipsum dolor sit amet, consectetur.</h1>
-          <div class="row justify-content-center">
-            <div class="col-auto">
-              <p><a class="btn btn-success btn-lg" href="#" role="button">FREE TRIAL</a> </p>
-            </div>
-            <div class="col-auto">
-              <p><a class="btn btn-primary btn-lg" href="#" role="button">BUY NOW</a> </p>
-            </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="jumbotron">
+        <h1 class="text-center">Revature Community</h1>
+        <p class="text-center">Connect with your fellow associates! (Description pending)</p>
+        <img
+          src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/1200X400.gif"
+          alt="" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container text-white">
+  <div class="row">
+    <div class="text-center col-md-6 col-12">
+      <h3>Already have an account?</h3>
+      <p>Click below to </p>
+      <a class="btn btn-danger btn-lg" href="#loginModal" role="button" data-toggle="modal">Login</a>
+    </div>
+    <div class="text-center col-md-6 col-12">
+      <h3>Need to sign up?</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, magnam?</p>
+      <a class="btn btn-info btn-lg" href="#registerModal" data-toggle='modal' role="button">Register</a>
+    </div>
+  </div>
+</div>
+<hr>
+
+<div class="container text-white">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-6 mb-md-0 mb-2">
+      <h2>Contact Us</h2>
+      <address>
+        <strong>Revature</strong><br>
+        11730 Plaza America Dr,<br>
+        Reston, VA, 20190, US<br>
+        <abbr title="Phone">P:</abbr> (703) 570-8181
+      </address>
+      <h4>Social</h4>
+      <div class="row">
+        <!-- Open these in new tab also just a general idea if we want to implement other socials -->
+        <div class="col-2"><a href="https://twitter.com/WeAreRevature"><img
+              src="https://pngimg.com/uploads/twitter/twitter_PNG1.png" height="32" alt=""></a></div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-12">
+      <h2>About Us</h2>
+      <!-- Taken from project description -->
+      <p>Revature Community aims at providing a place for Revature employee's to post or ask questions about things to
+        do in particular locations. Also to connect the Revature employees on 4 basic categories: Housing,
+        Entertainment, Food, and Events.</p>
+    </div>
+  </div>
+</div>
+<hr>
+
+<div id="loginModal" class="modal fade">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Member Login</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="app/topnav" method="post">
+          <div class="form-group">
+            <input type="username" [(ngModel)]='username' class="form-control" name="username" placeholder="Username"
+              required="required">
           </div>
-          <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, vel minima quis commodi atque animi eum unde culpa magnam vero.</p>
-          <img src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/1200X400.gif" alt="" class="img-fluid"> 
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container text-white">
-    <div class="row">
-      <div class="text-center col-md-6 col-12">
-        <h3>Lorem ipsum</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, magnam?</p>
-        <a class="btn btn-danger btn-lg" href="#" role="button">Tutorials</a>
-      </div>
-      <div class="text-center col-md-6 col-12">
-        <h3>Lorem ipsum</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, magnam?</p>
-        <a class="btn btn-info btn-lg" href="#" role="button">Documentation</a>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="container text-white">
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-12">
-        <h2>Lorem ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis accusamus praesentium eveniet ad unde doloremque ex officia eius ab quibusdam.</p>
-      </div>
-      <div class="col-lg-3 col-md-6 col-12">
-        <h2>Lorem ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, mollitia natus amet eligendi consequuntur. Veritatis ullam debitis voluptas repellat laboriosam.</p>
-      </div>
-      <div class="col-lg-3 col-md-6 col-12">
-        <h2> Lorem ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, error, itaque non vel architecto ratione obcaecati doloribus delectus illum harum?</p>
-      </div>
-      <div class="col-lg-3 col-md-6 col-12">
-        <h2>Lorem ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, nam voluptate accusantium nulla distinctio odit aliquam voluptatem ab. Earum.</p>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="container mt-4 text-white">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="card">
-          <img class="card-img-top" src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/600X300.gif" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Feature</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, at.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="form-group">
+            <input type="password" [(ngModel)]='password' class="form-control" name="password" placeholder="Password"
+              required="required">
           </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card">
-          <img class="card-img-top" src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/600X300.gif" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Feature</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, at.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="form-group">
+            <button (click)=validateUser() type="submit"
+              class="btn btn-primary btn-lg btn-block login-btn">Login</button>
           </div>
-        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#">Forgot Password?</a>
       </div>
     </div>
   </div>
-  <div class="container text-white">
-    <div class="row">
-      <div class="container py-sm-4">
-        <div class="row">
-          
-           
-        </div>
+</div>
+
+<div id="registerModal" class="modal fade">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="app/topnav" method="post">
+          <div class="form-group">
+            <input type="username" [(ngModel)]='username' class="form-control" name="username" placeholder="Username"
+              required="required">
+          </div>
+          <div class="form-group">
+            <input type="username" [(ngModel)]='email' class="form-control" name="email" placeholder="Email"
+              required="required">
+          </div>
+          <div class="form-group">
+            <input type="password" [(ngModel)]='password' class="form-control" name="password" placeholder="Password"
+              required="required">
+          </div>
+          <div class="form-group">
+            <button (click)=createUser() type="submit"
+              class="btn btn-primary btn-lg btn-block login-btn">Sign Up</button>
+              {{username}}
+              {{password}}
+              {{email}}
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  <hr>
-  <div class="containe text-white">
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-6 mb-md-0 mb-2">
-        <h2>Contact Us</h2>
-        <address>
-          <strong>MyCompany, Inc.</strong><br>
-          Sunny Autumn Plaza, Grand Coulee,<br>
-          CA, 91308-4075, US<br>
-          <abbr title="Phone">P:</abbr> (123) 456-7890
-        </address>
-        <h4>Social</h4>
-        <div class="row">
-          <div class="col-2"><img class="rounded-circle" src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/32X32.gif" alt=""></div>
-          <div class="col-2"><img class="rounded-circle" src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/32X32.gif" alt=""></div>
-          <div class="col-2"><img class="rounded-circle" src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/32X32.gif" alt=""></div>
-          <div class="col-2"><img class="rounded-circle" src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/32X32.gif" alt=""></div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-12">
-        <h2>Testimonials</h2>
-        <ul class="list-unstyled">
-          <li class="media">
-            <img class="mr-3" src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/35X35.gif" alt="Generic placeholder image">
-            <div class="media-body">
-              <h5 class="mt-0 mb-1">Heading 1</h5>
-              <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-            </div>
-          </li>
-          <li class="media my-4">
-            <img class="mr-3" src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/35X35.gif" alt="Generic placeholder image">
-            <div class="media-body">
-              <h5 class="mt-0 mb-1">Heading 2</h5>
-              <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="col-lg-4 col-12">
-        <h2>About Us</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, voluptates, soluta velit nostrum ut iste exercitationem vitae ipsum repellendus laudantium ab possimus nemo odio cumque illum nulla laborum blanditiis unde.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, voluptates, soluta velit nostrum ut iste exercitationem vitae ipsum repellendus laudantium ab possimus nemo odio cumque illum nulla laborum blanditiis unde.</p>
-      </div>
-    </div>
-  </div>
-  <hr>
+</div>
