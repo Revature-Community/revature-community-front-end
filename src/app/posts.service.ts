@@ -7,6 +7,7 @@ import { Posts } from './models/posts';
 export class PostsService {
 
   baseUrl = 'http://localhost:8085/post/';
+  categoryType: any;
 
   constructor(private http:HttpClient) { }
   
@@ -19,4 +20,6 @@ export class PostsService {
     return this.http.get<Posts[]>(this.baseUrl);
   }
  
+
+
 }
