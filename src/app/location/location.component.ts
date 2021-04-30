@@ -4,6 +4,7 @@ import { LocationService } from '../location.service';
 
 import { Loc } from '../models/location';
 
+
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -77,9 +78,10 @@ export class LocationComponent implements OnInit {
     'Wyoming',
   ];
 
+
+
   getData() {
-    const url = 'http://localhost:8085/locations/';
-    this.http.get(url).subscribe(res => {
+    this.locationService.getLocations().subscribe(res => {
       this.locationdata = res;
       console.log(this.locationdata);
     });
@@ -87,9 +89,11 @@ export class LocationComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private _httpservice: LocationService,
+    private locationService: LocationService,
     private router: Router
-  ) {}
+  ) {
+    this.locationdata = this.getData(); 
+  }
 
   ngOnInit(): void {
     this.getData();
@@ -98,7 +102,7 @@ export class LocationComponent implements OnInit {
   addLocation() {
     let location = new Loc(this.city, this.state);
 
-    this._httpservice.saveLocation(location).subscribe((data: any) => {
+    this.locationService.saveLocation(location).subscribe((data: any) => {
       location = data;
     });
     //this.location = new Loc();
