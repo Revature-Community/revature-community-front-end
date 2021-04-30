@@ -8,11 +8,11 @@ import { Loc } from './models/location';
   providedIn: 'root'
 })
 export class LocationService {
-  baseurl='localhost:8085/locations/'
+  baseurl='http://localhost:8085/locations/'
   constructor(private http:HttpClient) {}
 
   //POST
-  saveLocation(location: Loc): Observable<Loc> { 
+  saveLocation(location: Loc): Observable<Object> { 
     return this.http.post<Loc>(this.baseurl + "add/" + location.city + "/" + location.state, location)
   }
 
