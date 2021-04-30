@@ -62,13 +62,12 @@ displayMenu(){
     document.getElementById("res"+this.toggl).contentEditable = "true";
     let textAreaUpdate = document.getElementById("res-inputupdate"+this.toggl);
     textAreaUpdate.style.display="block";
-    console.log('ta', textAreaUpdate.scrollHeight)
     // let textAreaUpdateElement = (textAreaUpdate as HTMLInputElement);
     // textAreaUpdate.style.overflow = 'hidden';
+    (textAreaUpdate as HTMLInputElement).value=content;
     textAreaUpdate.style.height = 'auto';
     textAreaUpdate.style.height = textAreaUpdate.scrollHeight + 'px';
     currRes.style.display="none";
-    (textAreaUpdate as HTMLInputElement).value=content;
     textAreaUpdate.focus();
   }
 
