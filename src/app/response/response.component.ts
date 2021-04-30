@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ComponentFixtureAutoDetect } from '@angular/core/testing';
 import { RepliesService } from '../services/replies.service';
 
 @Component({
@@ -13,20 +14,26 @@ export class ResponseComponent implements OnInit {
   @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef | any;
   responses:any = [];
   currentResponse:any;
+  displayOptions:Boolean = false;
+  editedResponse:any;
+  toggl:any;
+  editButton:Boolean = false;
   ngOnInit(): void {
-   
-   this.repliesService.getReplies(this.postId).subscribe(res => {
+    this.repliesService.getReplies(this.postId).subscribe(res => {
       for (let val of res) {
         let lenless255 = false;
         if (val.content.length > 255) {
           lenless255 = true;
-          console.log(res);
         }
         const resp = {id: val.id, response: val.content, show: !lenless255};
         this.responses.push(resp);
       }
     })
   }
+
+displayMenu(){
+  this.displayOptions = !this.displayOptions;
+}
 
   handleResponses() {
     let lenless255 = false;
@@ -44,8 +51,31 @@ export class ResponseComponent implements OnInit {
     })
   }
 
+  editReply(){
+    document.getElementById("res"+this.toggl).contentEditable = "true";
+  }
+
+
+  disableEdit(id){
+    document.getElementById("res"+id).contentEditable = "false";
+  }
+
+  submitUpdateReply(){
+    const reply = {id: this.responses[this.toggl].id, content: document.getElementById("res"+this.toggl).innerHTML, postId: this.postId, userId: 1}
+    this.repliesService.updateReply(reply).subscribe(res => {
+    })
+    this.disableEdit(this.toggl)
+  }
+
+  submitDelete(){
+    let rem = document.getElementById("box"+this.toggl)
+    this.repliesService.deleteReply(this.responses[this.toggl].id).subscribe(res => {
+    })
+    rem.remove();
+  }
+
   changeParam(id:number){
-    this.responses[id-1].show = true;
+    this.responses.find((x: { id: number; }) => x.id === id).show = true;
   }
 
   getDisplayType(type:any) {

@@ -1,7 +1,10 @@
 <app-topnav></app-topnav>
 <!-- <app-reponse [postId]=1></app-reponse> -->
 
-<!-- <app-location></app-location> -->
+    <app-topnav *ngIf=isLoggedIn></app-topnav>
+    <!-- <app-reponse [postId]=1></app-reponse> -->
+    
+    <!-- <app-location></app-location> -->
 
     <router-outlet></router-outlet>
 

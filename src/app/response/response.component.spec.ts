@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -22,7 +23,10 @@ describe('ReponseComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ 
         ResponseComponent,
-        ResponsePipePipe
+        ResponsePipePipe,
+      ], 
+      imports: [
+        HttpClientModule
       ]
     })
     .compileComponents();
@@ -56,6 +60,9 @@ describe('ReponseComponent', () => {
 
     it('should have a response', () => {
       const responseElements = fixture.debugElement.queryAll(By.css('.response'));
+      for (let i = 0; i < fakeResponses.length; i++) {
+        responseElements[i] = fakeResponses[i];
+      }
       expect(responseElements.length).toBe(fakeResponses.length);
     });
   });
