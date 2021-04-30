@@ -6,13 +6,23 @@
       <div id="res" class="response" [ngStyle]="{'display': getDisplayType(response.showMore)}">
         <div id="optionsmenu" class="options" (click) = "displayMenu(); toggl === i ? toggl = i : toggl = i">. . .
           <div id = "textmenu" class = "options"  *ngIf = "displayOptions && toggl === i">
-            <p class = "clickable" style = "color:black" (click) = "editReply(); editButton = true">Edit</p>
-            <p class = "clickable" style = "color:black" (click) = "submitDelete()">Delete</p>
+            <p class = "clickable" (click) = "editReply(); editButton = true">Edit</p>
+            <p class = "clickable" (click) = "submitDelete()">Delete</p>
           </div>
         </div>
-        <span id="res{{i}}">{{response.response | responsePipe:response.show}}</span>
-        <br><button *ngIf = "editButton && toggl === i" (click)="submitUpdateReply();toggl === i ? toggl = null : toggl = null">submit</button>
-        <span class="show-more" *ngIf="!response.show" (click)="changeParam(response.id)"> ...Show More</span>
+          <div id="username">
+            {{response.username}}
+          </div>
+          <div>
+            <textarea [(ngModel)]="editedResponse" class= "resinput" id="res-inputupdate{{i}}"></textarea>
+            <span id="res{{i}}">{{response.response | responsePipe:response.show}}</span>
+            <span class="show-more" *ngIf="!response.show" (click)="changeParam(response.id)"> ...Show More</span>
+          </div>
+          <div>
+            <div id="update-button" *ngIf = "editButton && toggl === i" (click)="submitUpdateReply();toggl === i ? toggl = null : toggl = null">submit</div>
+            <div id="update-button" *ngIf = "editButton && toggl === i" (click)="cancelReplyUpdate();toggl === i ? toggl = null : toggl = null">cancel</div>
+          </div>
+            
       </div>
     </div>
     </div>
