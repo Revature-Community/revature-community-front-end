@@ -20,24 +20,9 @@ describe('UpvotesService', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
     upvote = [
       {
-          "id": 1,
-          "postId": {
-            "id":1,
-            "title":"Hello",
-            "content":"howdy",
-            "locationId": {
-                "id":3,
-                "city":"Orlando",
-                "state":"Florida"
-            },
-            "CategoryType":"Entertainment"
-          },
-        "userId":{
-            "id":10,
-            "email":"brian.kinney@revature.net",
-            "username":"bkinney",
-            "password":"1234"
-        }
+        "id": 1,
+        "postId":1 ,
+        "userId": 1,
       },
   ];
   });

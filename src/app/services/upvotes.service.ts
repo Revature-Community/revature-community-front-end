@@ -15,7 +15,7 @@ export class UpvotesService {
     })
   }
 
-  getUpvotes(postId: Object): Observable<any> {
+  getUpvotes(postId: number): Observable<any> {
     return this.http.get<any>(this.baseUrl + postId)
     .pipe(
       retry(1),
