@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Posts } from 'src/app/models/posts';
+import { PostsService } from 'src/app/posts.service';
 
 @Component({
   selector: 'app-writepost',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WritepostComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _post:PostsService) { }
 
   ngOnInit(): void {
   }
+
+  randomPost: Posts = {title: 'Project 3', content: 'random stuff', location: '{}', categoryType: 'Housing'}
+ 
+  // Pulled from Post Service, I recieve errors when I subscribe 
+  // submitPost(){
+  //   this._post.submitPost(this.randomPost).subscribe(data => {
+  //     console.log(data);
+  //   })
+  //}
 
 }
