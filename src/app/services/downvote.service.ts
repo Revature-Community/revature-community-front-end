@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class DownvoteService {
 
-  baseUrl = 'http://localhost:8085/api/v1/downvotes/';
+  baseUrl = 'http://localhost:8085/downvotes/';
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
