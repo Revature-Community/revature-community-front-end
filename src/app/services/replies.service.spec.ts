@@ -73,7 +73,7 @@ describe('RepliesService', () => {
         expect(data).toBe(1);
       });
 
-      const req = httpMock.expectOne(baseUrl+'delete/'+1);
+      const req = httpMock.expectOne(baseUrl+'delete/'+ 1);
       expect(req.request.method).toBe('DELETE');
       req.flush(1);
       httpMock.verify();
