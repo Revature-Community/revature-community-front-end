@@ -34,7 +34,7 @@ import { GeocodingComponent } from './geocoding/geocoding.component'
     PostsModule,
     NgbModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD3BlgJZyaIw5t0icH1kNTQ619p5BJYBpo', 
+      apiKey: '', 
       libraries: ['places']
     })
     
