@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class RepliesService {
   
-  baseUrl = 'http://localhost:8085/api/v1/responses/';
+  baseUrl = 'http://localhost:8085/responses/';
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
