@@ -1,6 +1,4 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ComponentFixtureAutoDetect } from '@angular/core/testing';
-import { $ } from 'protractor';
 import { RepliesService } from '../services/replies.service';
 
 @Component({
@@ -42,7 +40,6 @@ displayMenu(){
     if (this.currentResponse.length > 255) {
       lenless255 = true;
     }
-    //TODO: REMOVE userId + useername later when login imple
     const replyData = {postId: this.postId, content : this.currentResponse, userId: localStorage.getItem("userId"), username: localStorage.getItem("username")};
     this.repliesService.postReply(replyData).subscribe(res => {
       this.responses.push({username: localStorage.getItem("username"), id: res.id, response: res.content, post_id: res.postId, show: res.content.length < 255});
@@ -60,8 +57,6 @@ displayMenu(){
     document.getElementById("res"+this.toggl).contentEditable = "true";
     let textAreaUpdate = document.getElementById("res-inputupdate"+this.toggl);
     textAreaUpdate.style.display="block";
-    // let textAreaUpdateElement = (textAreaUpdate as HTMLInputElement);
-    // textAreaUpdate.style.overflow = 'hidden';
     (textAreaUpdate as HTMLInputElement).value=content;
     textAreaUpdate.style.height = 'auto';
     textAreaUpdate.style.height = textAreaUpdate.scrollHeight + 'px';
@@ -75,7 +70,7 @@ displayMenu(){
   }
 
   submitUpdateReply(){
-    const reply = {id: this.responses[this.toggl].id, content: this.editedResponse, postId: this.postId, userId: 1};
+    const reply = {username: localStorage.getItem("username"), id: this.responses[this.toggl].id, content: this.editedResponse, postId: this.postId, userId: 1};
     this.repliesService.updateReply(reply).subscribe();
     document.getElementById("res-inputupdate"+this.toggl).style.display="none";
     document.getElementById("res"+this.toggl).innerHTML = this.editedResponse;
