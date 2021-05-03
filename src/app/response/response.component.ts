@@ -14,8 +14,7 @@ export class ResponseComponent implements OnInit {
   responses:any = [];
   currentResponse:any;
   ngOnInit(): void {
-    //Always follow ID can remove later, remove before pushing
-    this.repliesService.getReplies(this.postId || 0).subscribe(res => {
+    this.repliesService.getReplies(this.postId).subscribe(res => {
       for (let val of res) {
         let lenless255 = false;
         if (val.content.length > 255) {
