@@ -2,7 +2,8 @@
   <div *ngSwitchCase="'all'">
     <label for="location">Location:</label>
     <!-- <label for="locs">Choose a location:</label> -->
-    <select [(ngModel)]="this.locationForPosts" name="location" id="location">
+    <!-- find for location id -->
+    <select [(ngModel)]="this.locationForPosts" name="location" id="location"> 
       <option *ngFor="let loc of locationdata" value="{{loc.id}}">
         {{ loc.city }} {{ loc.state }}
       </option>

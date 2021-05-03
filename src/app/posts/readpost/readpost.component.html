@@ -1,4 +1,4 @@
-<div><span (click)="openNav()" style="color: white;">open (click me and change me later)</span>
+<div><span (click)="openNav()" style="color: white;"><button class="btn btn-outline-success my-2 my-sm-0"> Filter</button></span>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" id="closebtn">&times;</a>
         <a href="#">Location</a>
@@ -17,11 +17,6 @@
 
     </div>
 </div>
-
-<!-- Little problem is that when I  try to filter the posts by one thing i.e. Food, 
-     and filter by something else, I cannot filter by food again unless refreshing 
-     Hopefully we will figure a solution soon! -->
-
 
 <div [ngSwitch]=view>
     <div *ngSwitchCase="'all'">
@@ -104,7 +99,6 @@
                     
 
                 </div>
-
 
             
         </div>
