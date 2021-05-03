@@ -52,10 +52,10 @@ displayMenu(){
 
   editReply(){
     if(!this.responses[this.toggl].show) this.responses[this.toggl].show = !this.responses[this.toggl].show;
-    let currRes = document.getElementById("res"+this.toggl);
+    let currRes = document.getElementById("res"+this.toggl+this.postId);
     let content = currRes.innerHTML;
-    document.getElementById("res"+this.toggl).contentEditable = "true";
-    let textAreaUpdate = document.getElementById("res-inputupdate"+this.toggl);
+    document.getElementById("res"+this.toggl+this.postId).contentEditable = "true";
+    let textAreaUpdate = document.getElementById("res-inputupdate"+this.toggl+this.postId);
     textAreaUpdate.style.display="block";
     (textAreaUpdate as HTMLInputElement).value=content;
     textAreaUpdate.style.height = 'auto';
@@ -66,15 +66,15 @@ displayMenu(){
 
 
   disableEdit(id){
-    document.getElementById("res"+id).contentEditable = "false";
+    document.getElementById("res"+id+this.postId).contentEditable = "false";
   }
 
   submitUpdateReply(){
     const reply = {username: localStorage.getItem("username"), id: this.responses[this.toggl].id, content: this.editedResponse, postId: this.postId, userId: 1};
     this.repliesService.updateReply(reply).subscribe();
-    document.getElementById("res-inputupdate"+this.toggl).style.display="none";
-    document.getElementById("res"+this.toggl).innerHTML = this.editedResponse;
-    document.getElementById("res"+this.toggl).style.display="block";
+    document.getElementById("res-inputupdate"+this.toggl+this.postId).style.display="none";
+    document.getElementById("res"+this.toggl+this.postId).innerHTML = this.editedResponse;
+    document.getElementById("res"+this.toggl+this.postId).style.display="block";
     this.editButton = false;
     this.disableEdit(this.toggl)
   }

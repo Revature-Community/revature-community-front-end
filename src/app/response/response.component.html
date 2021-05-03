@@ -14,8 +14,8 @@
             {{response.username}}
           </div>
           <div>
-            <textarea [(ngModel)]="editedResponse" class= "resinput" id="res-inputupdate{{i}}"></textarea>
-            <span id="res{{i}}">{{response.response | responsePipe:response.show}}</span>
+            <textarea [(ngModel)]="editedResponse" class= "resinput" id="res-inputupdate{{i}}{{postId}}"></textarea>
+            <span id="res{{i}}{{postId}}">{{response.response | responsePipe:response.show}}</span>
             <span class="show-more" *ngIf="!response.show" (click)="changeParam(response.id)"> ...Show More</span>
           </div>
           <div>
