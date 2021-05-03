@@ -54,10 +54,8 @@ export class WritepostComponent implements OnInit {
     // Console loggin info
     console.log(this.userPost);
     console.log(this.locationForPosts);
-    // console.log("City: "+this.locationForPosts.city);
-    // console.log("State: "+this.locationForPosts.state);
+
     this._post.submitPost(this.userPost).subscribe(data => {
-      console.log(data);
     });
   }
 
