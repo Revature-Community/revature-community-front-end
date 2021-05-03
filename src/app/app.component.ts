@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isLoggedIn:boolean= false;
+
+  title: string = "Revature Community";
+
   constructor() {}
   ngAfterViewChecked(){
     this.isLoggedIn = (localStorage.getItem("isLoggedIn") === "true");

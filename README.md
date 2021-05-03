@@ -50,9 +50,9 @@ To-do list:
 
 > Juan Alcantara, Will Alexander, Edward Artacho, Edward Aylott, David Carillo, Christian Cherry, Rodrigo Flores, Tevin Gray, Alfonso Guaderrama, Gabe Harper, Isaak Jensen, Robert Keisling, Brian Kinney, Jun Lei, Trevor Mulrenin, Max Nicholai, Larissa Santos, Jameson Bryant
 
-## License
+<!-- ## License
 
-This project uses the following license: [<license_name>](<link>).
+This project uses the following license: [<license_name>](<link>). -->
 
 
 
