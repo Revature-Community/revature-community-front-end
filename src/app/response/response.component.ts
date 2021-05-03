@@ -21,7 +21,6 @@ export class ResponseComponent implements OnInit {
   editButton:Boolean = false;
   ngOnInit(): void {
     this.repliesService.getReplies(this.postId).subscribe(res => {
-      console.log("res", res)
       for (let val of res) {
         let lenless255 = false;
         if (val.content.length > 255) {
@@ -43,10 +42,10 @@ displayMenu(){
     if (this.currentResponse.length > 255) {
       lenless255 = true;
     }
-    //TODO: REMOVE userId + useername
-    const replyData = {postId: this.postId, content : this.currentResponse, userId: 1, username: "jlei2"};
+    //TODO: REMOVE userId + useername later when login imple
+    const replyData = {postId: this.postId, content : this.currentResponse, userId: localStorage.getItem("userId"), username: localStorage.getItem("username")};
     this.repliesService.postReply(replyData).subscribe(res => {
-      this.responses.push({id: res.id, response: res.content, post_id: res.postId, show: res.content.length < 255});
+      this.responses.push({username: localStorage.getItem("username"), id: res.id, response: res.content, post_id: res.postId, show: res.content.length < 255});
       this.currentResponse = "";
       const textArea = this.textArea.nativeElement;
       textArea.style.overflow = 'hidden';
@@ -55,7 +54,6 @@ displayMenu(){
   }
 
   editReply(){
-    console.log(this.responses[this.toggl]);
     if(!this.responses[this.toggl].show) this.responses[this.toggl].show = !this.responses[this.toggl].show;
     let currRes = document.getElementById("res"+this.toggl);
     let content = currRes.innerHTML;
@@ -106,7 +104,6 @@ displayMenu(){
     textArea.style.overflow = 'hidden';
     textArea.style.height = '0px';
     textArea.style.height = textArea.scrollHeight + 'px';
-    console.log(textArea)
   }
 
   cancelReplyUpdate() {
