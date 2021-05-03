@@ -11,6 +11,7 @@ export class Posts {
     public content: string,
     public locationId: Locations, //change to location type later
     public categoryType: string, //change to category type later
-    public id?: number
+    public userId?: number,
+    public username?: string
 )
 {}}
