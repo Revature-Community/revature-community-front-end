@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class RepliesService {
   
-  baseUrl = 'http://localhost:8085/api/v1/responses/';
+  baseUrl = 'http://localhost:8085/responses/';
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
@@ -16,8 +16,8 @@ export class RepliesService {
     })
   }
 
-  getReplies(postId: Object): Observable<any> {
-    return this.http.get<any>(this.baseUrl + postId)
+  getReplies(postId: Object): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl + "responses/"+ postId)
     .pipe(
       retry(1),
       catchError(this.errorHandler)
