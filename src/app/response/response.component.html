@@ -2,7 +2,7 @@
 <div id="response-container" style="height: 100%;">
   <div id="response-body">
     <div id="res-try" *ngFor = "let response of responses; let i = index">
-      <div id="box{{i}}">
+      <div id="box{{i}}{{postId}}">
       <div id="res" class="response" [ngStyle]="{'display': getDisplayType(response.showMore)}">
         <div id="optionsmenu" class="options" (click) = "displayMenu(); toggl === i ? toggl = i : toggl = i">. . .
           <div id = "textmenu" class = "options"  *ngIf = "displayOptions && toggl === i">

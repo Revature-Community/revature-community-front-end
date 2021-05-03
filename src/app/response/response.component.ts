@@ -66,7 +66,7 @@ displayMenu(){
 
 
   disableEdit(id){
-    document.getElementById("res"+id+this.postId).contentEditable = "false";
+    document.getElementById("res"+id).contentEditable = "false";
   }
 
   submitUpdateReply(){
@@ -80,7 +80,7 @@ displayMenu(){
   }
 
   submitDelete(){
-    let rem = document.getElementById("box"+this.toggl)
+    let rem = document.getElementById("box"+this.toggl+this.postId)
     this.repliesService.deleteReply(this.responses[this.toggl].id).subscribe(res => {
     })
     rem.remove();
