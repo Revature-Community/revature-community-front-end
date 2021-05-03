@@ -102,7 +102,11 @@ getData() {
 }
 
 filterByLocation(locationId: number) {
-  
+  const url = 'http://localhost:8085/posts/';
+  this.http.get(url).subscribe(res => {
+    this.locationdata = res;
+    console.log(this.locationdata);
+  });
 }
 
 //
