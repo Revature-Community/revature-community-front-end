@@ -1,37 +1,21 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
-import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
-import { RouterTestingModule } from '@angular/router/testing'; 
-
-import { LocationService } from '../location.service'
-import { LocationServiceMock } from '../mocks/location-service-mock'
-
+import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { LocationService } from '../location.service';
 import { LocationComponent } from './location.component';
-import { Observable } from 'rxjs';
-import { Loc } from '../models/location';
+
 
 describe('LocationComponent', () => {
   let component: LocationComponent;
-  let fixture: ComponentFixture<LocationComponent>;
-  let httpClient: HttpClientModule; 
-  let httpTestingController: HttpTestingController; 
-  let locationService: LocationService; 
+  let fixture: ComponentFixture<LocationComponent>; 
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule, 
-        RouterTestingModule
-      ], 
+      imports: [ HttpClientModule ],
       declarations: [ LocationComponent ],
-      providers: [
-        {provide: LocationService, useClass: LocationServiceMock }
-      ]
+      providers: [ LocationService ]
     })
     .compileComponents();
-    locationService = TestBed.inject(LocationService)
-    httpClient = TestBed.inject(HttpClientModule); 
-    httpTestingController = TestBed.inject(HttpTestingController)
+    
   });
 
   beforeEach(() => {
@@ -40,12 +24,19 @@ describe('LocationComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+ it('should create', () => {
     expect(component).toBeTruthy();
   });
+ 
+ it('should have 48 states', () => { 
+   expect(component.states.length).toEqual(48); 
+ })
 
-  it(`should have one location`, waitForAsync(() => {
-    let res = locationService.getLocations()  
-      expect(res).toHaveClass("Observable"); 
-  })); 
+ it('should render an html form', () => { 
+   const form = fixture.debugElement.nativeElement.querySelector('.revature'); 
+   expect(form).toBeTruthy(); 
+ })
+
+ it('')
+
 });

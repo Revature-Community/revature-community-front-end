@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { LocationService } from '../location.service';
 
 import { Loc } from '../models/location';
 
-
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-location',
@@ -21,20 +18,15 @@ export class LocationComponent implements OnInit {
   city = '';
   state = '';
   states = [
-    'Alaska',
     'Alabama',
     'Arkansas',
-    'American Samoa',
     'Arizona',
     'California',
     'Colorado',
     'Connecticut',
-    'District of Columbia',
     'Delaware',
     'Florida',
     'Georgia',
-    'Guam',
-    'Hawaii',
     'Iowa',
     'Idaho',
     'Illinois',
@@ -50,28 +42,26 @@ export class LocationComponent implements OnInit {
     'Missouri',
     'Mississippi',
     'Montana',
-    'North Carolina',
-    'North Dakota',
     'Nebraska',
     'New Hampshire',
     'New Jersey',
     'New Mexico',
     'Nevada',
     'New York',
+    'North Carolina',
+    'North Dakota',
     'Ohio',
     'Oklahoma',
     'Oregon',
     'Pennsylvania',
-    'Puerto Rico',
     'Rhode Island',
     'South Carolina',
     'South Dakota',
     'Tennessee',
     'Texas',
     'Utah',
-    'Virginia',
-    'Virgin Islands',
     'Vermont',
+    'Virginia',
     'Washington',
     'Wisconsin',
     'West Virginia',
@@ -88,9 +78,7 @@ export class LocationComponent implements OnInit {
   }
 
   constructor(
-    private http: HttpClient,
     private locationService: LocationService,
-    private router: Router
   ) {
     this.locationdata = this.getData(); 
   }
