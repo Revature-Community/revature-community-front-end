@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { LocationService } from '../location.service';
 
 import { Loc } from '../models/location';
 
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-location',
@@ -20,20 +18,15 @@ export class LocationComponent implements OnInit {
   city = '';
   state = '';
   states = [
-    'Alaska',
     'Alabama',
     'Arkansas',
-    'American Samoa',
     'Arizona',
     'California',
     'Colorado',
     'Connecticut',
-    'District of Columbia',
     'Delaware',
     'Florida',
     'Georgia',
-    'Guam',
-    'Hawaii',
     'Iowa',
     'Idaho',
     'Illinois',
@@ -49,47 +42,46 @@ export class LocationComponent implements OnInit {
     'Missouri',
     'Mississippi',
     'Montana',
-    'North Carolina',
-    'North Dakota',
     'Nebraska',
     'New Hampshire',
     'New Jersey',
     'New Mexico',
     'Nevada',
     'New York',
+    'North Carolina',
+    'North Dakota',
     'Ohio',
     'Oklahoma',
     'Oregon',
     'Pennsylvania',
-    'Puerto Rico',
     'Rhode Island',
     'South Carolina',
     'South Dakota',
     'Tennessee',
     'Texas',
     'Utah',
-    'Virginia',
-    'Virgin Islands',
     'Vermont',
+    'Virginia',
     'Washington',
     'Wisconsin',
     'West Virginia',
     'Wyoming',
   ];
 
+
+
   getData() {
-    const url = 'http://localhost:8085/locations/';
-    this.http.get(url).subscribe(res => {
+    this.locationService.getLocations().subscribe(res => {
       this.locationdata = res;
       console.log(this.locationdata);
     });
   }
 
   constructor(
-    private http: HttpClient,
-    private _httpservice: LocationService,
-    private router: Router
-  ) {}
+    private locationService: LocationService,
+  ) {
+    this.locationdata = this.getData(); 
+  }
 
   ngOnInit(): void {
     this.getData();
@@ -98,7 +90,7 @@ export class LocationComponent implements OnInit {
   addLocation() {
     let location = new Loc(this.city, this.state);
 
-    this._httpservice.saveLocation(location).subscribe((data: any) => {
+    this.locationService.saveLocation(location).subscribe((data: any) => {
       location = data;
     });
     //this.location = new Loc();
