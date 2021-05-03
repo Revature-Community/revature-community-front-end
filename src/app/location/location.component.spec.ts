@@ -1,16 +1,21 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { LocationService } from '../location.service';
 import { LocationComponent } from './location.component';
+
 
 describe('LocationComponent', () => {
   let component: LocationComponent;
-  let fixture: ComponentFixture<LocationComponent>;
+  let fixture: ComponentFixture<LocationComponent>; 
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LocationComponent ]
+      imports: [ HttpClientModule ],
+      declarations: [ LocationComponent ],
+      providers: [ LocationService ]
     })
     .compileComponents();
+    
   });
 
   beforeEach(() => {
@@ -19,7 +24,19 @@ describe('LocationComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+ it('should create', () => {
     expect(component).toBeTruthy();
   });
+ 
+ it('should have 48 states', () => { 
+   expect(component.states.length).toEqual(48); 
+ })
+
+ it('should render an html form', () => { 
+   const form = fixture.debugElement.nativeElement.querySelector('.revature'); 
+   expect(form).toBeTruthy(); 
+ })
+
+ it('')
+
 });

@@ -17,7 +17,7 @@ export class LocationService {
   }
 
    // GET
- GetLocations(): Observable<Loc> {
+ getLocations(): Observable<Loc> {
   return this.http.get<Loc>(this.baseurl)
   .pipe(
     retry(1),
@@ -26,7 +26,7 @@ export class LocationService {
 }
 
 // GET BY ID
-GetLocation(id: any): Observable<Loc> {
+getLocation(id: any): Observable<Loc> {
   return this.http.get<Loc>(this.baseurl + id)
   .pipe(
     retry(1),

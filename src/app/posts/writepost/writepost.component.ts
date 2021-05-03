@@ -6,6 +6,7 @@ import { Posts } from 'src/app/models/posts';
 import { PostsService } from 'src/app/posts.service';
 import { HttpClient } from '@angular/common/http';
 import { Locations } from 'src/app/models/locations';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-writepost',
@@ -39,12 +40,16 @@ export class WritepostComponent implements OnInit {
 
   submitPost() {
     let postLocation = new Locations(this.locationForPosts, "")
+    let x = parseInt(localStorage.getItem("userId"));
     this.userPost = {
       title: this.title,
       content: this.content,
       locationId: postLocation,
       categoryType: this.categoryType,
+      userId: x,
+      username: localStorage.getItem("username")
     };
+    console.log("user id:" + localStorage.getItem("userId") + " and " + x);
 
     // Console loggin info
     console.log(this.userPost);
@@ -64,17 +69,13 @@ export class WritepostComponent implements OnInit {
     'Alaska',
     'Alabama',
     'Arkansas',
-    'American Samoa',
     'Arizona',
     'California',
     'Colorado',
     'Connecticut',
-    'District of Columbia',
     'Delaware',
     'Florida',
     'Georgia',
-    'Guam',
-    'Hawaii',
     'Iowa',
     'Idaho',
     'Illinois',
@@ -102,7 +103,6 @@ export class WritepostComponent implements OnInit {
     'Oklahoma',
     'Oregon',
     'Pennsylvania',
-    'Puerto Rico',
     'Rhode Island',
     'South Carolina',
     'South Dakota',
@@ -110,7 +110,6 @@ export class WritepostComponent implements OnInit {
     'Texas',
     'Utah',
     'Virginia',
-    'Virgin Islands',
     'Vermont',
     'Washington',
     'Wisconsin',
@@ -121,8 +120,8 @@ export class WritepostComponent implements OnInit {
   addLocation() {
     let location = new Loc(this.city, this.state);
     console.log(location);
-    this._location.saveLocation(location).subscribe((data: any) => {
-      this.locationForPosts = data;
+    this._location.saveLocation(location).subscribe((data) => {
+      this.locationForPosts = data.id;
     });
   }
 
@@ -135,16 +134,14 @@ export class WritepostComponent implements OnInit {
   }
 
   getData() {
-    const url = 'http://localhost:8085/locations/';
-    this.http.get(url).subscribe(res => {
+    this._location.getLocations().subscribe(res => {
       this.locationdata = res;
       console.log(this.locationdata);
     });
   }
 
   addLocationToPost() {
-    
-
+    this.userPost.locationId.location = this.city + ", " + this.state
   }
 
 
