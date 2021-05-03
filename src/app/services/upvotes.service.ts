@@ -6,9 +6,8 @@ import { catchError, retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class RepliesService {
-  
-  baseUrl = 'http://localhost:8085/responses/';
+export class UpvotesService {
+  baseUrl = 'http://localhost:8085/upvote/'
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
@@ -16,7 +15,7 @@ export class RepliesService {
     })
   }
 
-  getReplies(postId: Object): Observable<any> {
+  getUpvotes(postId: number): Observable<any> {
     return this.http.get<any>(this.baseUrl + postId)
     .pipe(
       retry(1),
@@ -24,13 +23,23 @@ export class RepliesService {
     )
   }
 
-  postReply(reply:Object): Observable<any> {
-    return this.http.post<any>(this.baseUrl + 'submit-response', reply, this.httpOptions)
+  addUpvote(upvote: Object): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'add-upvote', upvote, this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.errorHandler)
     )
   }
+
+  deleteUpvote(upvoteId: number): Observable<any> {
+    return this.http.delete<any>(this.baseUrl + 'delete/' + upvoteId)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
+  }
+
+
 
   errorHandler(error:any) {
     let errorMessage = '';
@@ -40,21 +49,4 @@ export class RepliesService {
     }
     return throwError(errorMessage);
   }
-
-  updateReply(reply:object): Observable<any> { 
-    return this.http.put<any>(this.baseUrl+"update", reply)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandler)
-    )
-  }
-
-  deleteReply(id: number): Observable<any> {
-    return this.http.delete<any>(this.baseUrl + "delete/" + id)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandler)
-    )
-  }
-
 }
