@@ -101,8 +101,8 @@ getData() {
   });
 }
 
-filterByLocation() {
-
+filterByLocation(locationId: number) {
+  
 }
 
 //
