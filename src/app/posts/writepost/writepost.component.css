@@ -5,3 +5,50 @@
   margin: auto;
   padding: 10px;
 }
+
+#post-container{
+  width: 30rem;
+  margin: auto;
+}
+
+#select-city {
+  height: 35px;
+  margin-left: 20px;
+  border-radius: 4px;
+}
+
+.p-input {
+  height: 35px;
+}
+
+.p-text {
+  height: 5rem;
+}
+
+.post-cancel {
+  background-color: #B9B9BA;
+  width: 45%;
+}
+
+.post-submit {
+  background-color: #F26925;
+  width: 45%;
+  margin-right: 2.5rem;
+}
+
+#category {
+  width: 10rem;
+}
+
+#sel{
+  display: flex;
+  height: 35px;
+}
+
+#new-loc {
+  padding: 0;
+  background-color: #72A4C2;
+  color: black;
+  padding: 10px;
+  margin-bottom: 10px;
+}

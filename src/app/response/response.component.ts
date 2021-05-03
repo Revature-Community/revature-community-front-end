@@ -1,6 +1,4 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ComponentFixtureAutoDetect } from '@angular/core/testing';
-import { $ } from 'protractor';
 import { RepliesService } from '../services/replies.service';
 
 @Component({
