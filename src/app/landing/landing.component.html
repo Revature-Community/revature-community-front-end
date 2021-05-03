@@ -1,52 +1,118 @@
 <div class="container mt-2">
-    <div class="row">
-      <div class="col-12">
-        <div class="jumbotron">
-          <h1 class="text-center">Revature Connect</h1>
-          <p class="text-center">Connect with your fellow associates! (Description pending)</p>
-          <img src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/1200X400.gif" alt="" class="img-fluid"> 
-        </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="jumbotron">
+        <h1 class="text-center">Revature Community</h1>
+        <p class="text-center">Connect with your fellow associates! (Description pending)</p>
+        <img
+          src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/1200X400.gif"
+          alt="" class="img-fluid">
       </div>
     </div>
   </div>
-  <div class="container text-white">
-    <div class="row">
-      <div class="text-center col-md-6 col-12">
-        <h3>Already have an account?</h3>
-        <p>Click below to </p>
-        <a class="btn btn-danger btn-lg" href="#" role="button">Login</a>
-      </div>
-      <div class="text-center col-md-6 col-12">
-        <h3>Need to sign up?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, magnam?</p>
-        <a class="btn btn-info btn-lg" href="#" role="button">Register</a>
-      </div>
+</div>
+<div class="container text-white">
+  <div class="row">
+    <div class="text-center col-md-6 col-12">
+      <h3>Already have an account?</h3>
+      <p>Click below to </p>
+      <a class="btn btn-danger btn-lg" href="#loginModal" role="button" data-toggle="modal">Login</a>
+    </div>
+    <div class="text-center col-md-6 col-12">
+      <h3>Need to sign up?</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, magnam?</p>
+      <a class="btn btn-info btn-lg" href="#registerModal" data-toggle='modal' role="button">Register</a>
     </div>
   </div>
-  <hr>
+</div>
+<hr>
 
-  <div class="container text-white">
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-6 mb-md-0 mb-2">
-        <h2>Contact Us</h2>
-        <address>
-          <strong>Revature</strong><br>
-          11730 Plaza America Dr,<br>
-          Reston, VA, 20190, US<br>
-          <abbr title="Phone">P:</abbr> (703) 570-8181
-        </address>
-        <h4>Social</h4>
-        <div class="row">
-            <!-- Open these in new tab also just a general idea if we want to implement other socials -->
-          <div class="col-2"><a href="https://twitter.com/WeAreRevature"><img src="https://pngimg.com/uploads/twitter/twitter_PNG1.png" height="32"alt=""></a></div>
-        </div>
+
+<div class="container text-white">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-6 mb-md-0 mb-2">
+      <h2>Contact Us</h2>
+      <address>
+        <strong>Revature</strong><br>
+        11730 Plaza America Dr,<br>
+        Reston, VA, 20190, US<br>
+        <abbr title="Phone"></abbr> <a href="tel:(703) 570-8181">(703) 570-8181</a>
+      </address>
+      <h4>Social</h4>
+      <div class="row">
+        <!-- Open these in new tab also just a general idea if we want to implement other socials -->
+        <div class="col-2"><a target="_blank" href="https://twitter.com/WeAreRevature"><img
+              src="https://pngimg.com/uploads/twitter/twitter_PNG1.png" height="32" alt=""></a></div>
       </div>
-      
-      <div class="col-lg-4 col-12">
-        <h2>About Us</h2>
-        <!-- Taken from project description -->
-        <p>Revature Community aims at providing a place for Revature employee's to post or ask questions about things to do in particular locations. Also to connect the Revature employees on 4 basic categories: Housing, Entertainment, Food, and Events.</p>
+    </div>
+
+
+
+<div id="loginModal" class="modal fade">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Member Login</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="app/topnav" method="post">
+          <div class="form-group">
+            <input type="username" [(ngModel)]='username' class="form-control" name="email" placeholder="Email"
+              required="required">
+          </div>
+          <div class="form-group">
+            <input type="password" [(ngModel)]='password' class="form-control" name="password" placeholder="Password"
+              required="required">
+          </div>
+          <div class="form-group">
+            <button (click)=validateUser() type="submit"
+              class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#">Forgot Password?</a>
       </div>
     </div>
   </div>
-  <hr>
+</div>
+
+<div id="registerModal" class="modal fade">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="app/topnav" method="post">
+          <div class="form-group">
+            <input type="username" [(ngModel)]='username' class="form-control" name="username" placeholder="Username"
+              required="required">
+          </div>
+          <div class="form-group">
+            <input type="username" [(ngModel)]='email' class="form-control" name="email" placeholder="Email"
+              required="required">
+          </div>
+          <div class="form-group">
+            <input type="password" [(ngModel)]='password' class="form-control" name="password" placeholder="Password"
+              required="required">
+          </div>
+          <div class="form-group">
+            <input type="text" [(ngModel)]='firstName' class="form-control" name="firstName" placeholder="First Name"
+              required="required">
+          </div>
+          <div class="form-group">
+            <input type="text" [(ngModel)]='lastName' class="form-control" name="lastName" placeholder="Last Name"
+              required="required">
+          </div>
+          <div class="form-group">
+            <button (click)=createUser() type="submit"
+              class="btn btn-primary btn-lg btn-block login-btn">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,9 @@
 export class User {
-    public id: number = 0;
-    public username: string = '';
-    public password: string = '';
+    public id: number;
+    public email: string;
+    public username: string;
+    public password: string;
+    public firstName: string;
+    public lastName: string;
+    public roleId: number = 1;
 }

@@ -1,9 +1,16 @@
+import { Loc } from "./location";
+import { Locations } from "./locations";
+
 export class Posts {
+    static find(arg0: Posts, arg1: boolean) {
+      throw new Error('Method not implemented.');
+    }
+    [x: string]: any;
     constructor(
-    // public id: number,
     public title: string,
     public content: string,
-    public location: string, //change to location type later
-    public categoryType: string //change to category type later
+    public locationId: Locations, //change to location type later
+    public categoryType: string, //change to category type later
+    public id?: number
 )
 {}}

@@ -1,4 +1,11 @@
 export class Loc {
-    id: number | any; 
-    location: string | any; 
+  id: number;
+  city: string;
+  state: string;
+
+  constructor(city: string, state: string) {
+    this.city = city;
+    this.state = state;
+  }
+
 }
