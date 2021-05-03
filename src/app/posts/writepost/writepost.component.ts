@@ -44,6 +44,8 @@ export class WritepostComponent implements OnInit {
       content: this.content,
       locationId: postLocation,
       categoryType: this.categoryType,
+      id: parseInt(localStorage.getItem("userId")),
+      username: localStorage.getItem("username")
     };
 
     // Console loggin info
