@@ -40,14 +40,16 @@ export class WritepostComponent implements OnInit {
 
   submitPost() {
     let postLocation = new Locations(this.locationForPosts, "")
+    let x = parseInt(localStorage.getItem("userId"));
     this.userPost = {
       title: this.title,
       content: this.content,
       locationId: postLocation,
       categoryType: this.categoryType,
-      id: parseInt(localStorage.getItem("userId")),
+      userId: x,
       username: localStorage.getItem("username")
     };
+    console.log("user id:" + localStorage.getItem("userId") + " and " + x);
 
     // Console loggin info
     console.log(this.userPost);
@@ -66,6 +68,7 @@ export class WritepostComponent implements OnInit {
   locationdata: any = [];
 
   states = [
+    'Alaska',
     'Alabama',
     'Arkansas',
     'Arizona',
