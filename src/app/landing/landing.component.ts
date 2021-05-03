@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UrlSerializer } from '@angular/router';
+import { Router, UrlSerializer } from '@angular/router';
 import { User } from '../models/user';
 import { LandingService } from './landing.service';
 
@@ -16,7 +16,7 @@ export class LandingComponent implements OnInit {
   email='';
   firstName='';
   lastName='';
-  constructor(private landingService: LandingService) { }
+  constructor(private landingService: LandingService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +24,8 @@ export class LandingComponent implements OnInit {
     this.landingService.login(this.username, this.password).subscribe(data=>{
       localStorage.setItem("userId", data.id.toString(10));
       localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("username", data.username);
+      this.router.navigate(['/readpost'])
     });
   }
 
