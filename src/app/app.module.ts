@@ -12,6 +12,8 @@ import { PostsModule } from './posts/posts.module';
 import { LandingComponent } from './landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostsService } from './posts.service';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core'; 
+import { GeocodingComponent } from './geocoding/geocoding.component'
 
           
 @NgModule({
@@ -21,7 +23,8 @@ import { PostsService } from './posts.service';
     LocationComponent,
     TopnavComponent,
     FooterComponent,
-    LandingComponent
+    LandingComponent,
+    GeocodingComponent
   ],
   imports: [
     BrowserModule,
@@ -29,10 +32,14 @@ import { PostsService } from './posts.service';
     FormsModule,
     HttpClientModule,
     PostsModule,
-    NgbModule
+    NgbModule,
+    AgmCoreModule.forRoot({
+      apiKey: '', 
+      libraries: ['places']
+    })
     
   ],
-  providers: [ResponsePipePipe, PostsService],
+  providers: [ResponsePipePipe, PostsService, GoogleMapsAPIWrapper],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
