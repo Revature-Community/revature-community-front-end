@@ -1,15 +1,18 @@
-<div><span id = "filterspan"(click)="openNav()" style="color: white;"><button (click) = "getData()" id="filterbtn" class="btn btn-dark"> Filter</button></span>
+<div><span id="filterspan" (click)="openNav()" style="color: white;"><button (click)="getData()" id="filterbtn"
+            class="btn btn-dark"> Filter</button></span>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" id="closebtn">&times;</a>
         <a href="#">Location</a>
 
-
-        <select onchange="filterByPost(loc.id)" [(ngModel)]="this.locationForPosts" name="location" id="location"> 
+        <select [(ngModel)]="this.locationForPosts" name="location"
+            id="location">
+            <option value=0>All</option>
             <option *ngFor="let loc of locationdata" value="{{loc.id}}">
-              {{ loc.city }} {{ loc.state }}
-            </option>
-          </select>
-
+                {{ loc.city }}, {{ loc.state }}
+                <!--can remove loc.id later-->{{loc.id}}
+            </option>            
+        </select>
+        <button class = "btn btn-primary" (click)="filterByLocation()">Sort By Location</button>
 
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Category</a>
@@ -52,114 +55,107 @@
     </div>
     <div *ngSwitchCase="'Food'">
         <div *ngFor="let post of foodPosts" style="color: black;">
-            
 
-                <div class="card p-4">
-                    <div class="" style="text-align: left; height: 15rem;">
-                        <div style="border-bottom: 1px solid white;">
-                            <h3 class="card-title">{{post.title}}</h3>
-                            <div class="d-flex justify-content-around">
-                                <p class="card-subtitle mb-2 mr-auto">posted by: Charlemegne Smith</p>
-                                <p class="card-subtitle">{{post.categoryType}}</p>
-                            </div>
+
+            <div class="card p-4">
+                <div class="" style="text-align: left; height: 15rem;">
+                    <div style="border-bottom: 1px solid white;">
+                        <h3 class="card-title">{{post.title}}</h3>
+                        <div class="d-flex justify-content-around">
+                            <p class="card-subtitle mb-2 mr-auto">posted by: Charlemegne Smith</p>
+                            <p class="card-subtitle">{{post.categoryType}}</p>
                         </div>
-                        <div style=" border-bottom: 1px solid white; height: 10rem;" class="p-2">
-                            <p>{{post.content}}</p>
-
-                        </div>
-
+                    </div>
+                    <div style=" border-bottom: 1px solid white; height: 10rem;" class="p-2">
+                        <p>{{post.content}}</p>
 
                     </div>
-                    <app-reponse [postId]=post.id></app-reponse>
-                    
-
                 </div>
-
-
-            
+                <app-reponse [postId]=post.id></app-reponse>
+            </div>
         </div>
     </div>
     <div *ngSwitchCase="'Housing'">
         <div *ngFor="let post of housingPosts" style="color: black;">
-                <div class="card p-4">
-                    <div class="" style="text-align: left; height: 15rem;">
-                        <div style="border-bottom: 1px solid white;">
-                            <h3 class="card-title">{{post.title}}</h3>
-                            <div class="d-flex justify-content-around">
-                                <p class="card-subtitle mb-2 mr-auto">posted by: Charlemegne Smith</p>
-                                <p class="card-subtitle">{{post.categoryType}}</p>
-                            </div>
+            <div class="card p-4">
+                <div class="" style="text-align: left; height: 15rem;">
+                    <div style="border-bottom: 1px solid white;">
+                        <h3 class="card-title">{{post.title}}</h3>
+                        <div class="d-flex justify-content-around">
+                            <p class="card-subtitle mb-2 mr-auto">posted by: Charlemegne Smith</p>
+                            <p class="card-subtitle">{{post.categoryType}}</p>
                         </div>
-                        <div style=" border-bottom: 1px solid white; height: 10rem;" class="p-2">
-                            <p>{{post.content}}</p>
-
-                        </div>
-
+                    </div>
+                    <div style=" border-bottom: 1px solid white; height: 10rem;" class="p-2">
+                        <p>{{post.content}}</p>
 
                     </div>
-                    <app-reponse [postId]=post.id></app-reponse>
-                    
+
 
                 </div>
+                <app-reponse [postId]=post.id></app-reponse>
 
-            
+
+            </div>
+
+
         </div>
     </div>
     <div *ngSwitchCase="'Events'">
         <div *ngFor="let post of eventPosts" style="color: black;">
-           
 
-                <div class="card p-4">
-                    <div class="" style="text-align: left; height: 15rem;">
-                        <div style="border-bottom: 1px solid white;">
-                            <h3 class="card-title">{{post.title}}</h3>
-                            <div class="d-flex justify-content-around">
-                                <p class="card-subtitle mb-2 mr-auto">posted by: Charlemegne Smith</p>
-                                <p class="card-subtitle">{{post.categoryType}}</p>
-                            </div>
+
+            <div class="card p-4">
+                <div class="" style="text-align: left; height: 15rem;">
+                    <div style="border-bottom: 1px solid white;">
+                        <h3 class="card-title">{{post.title}}</h3>
+                        <div class="d-flex justify-content-around">
+                            <p class="card-subtitle mb-2 mr-auto">posted by: Charlemegne Smith</p>
+                            <p class="card-subtitle">{{post.categoryType}}</p>
                         </div>
-                        <div style=" border-bottom: 1px solid white; height: 10rem;" class="p-2">
-                            <p>{{post.content}}</p>
-
-                        </div>
-
+                    </div>
+                    <div style=" border-bottom: 1px solid white; height: 10rem;" class="p-2">
+                        <p>{{post.content}}</p>
 
                     </div>
-                    <app-reponse [postId]=post.id></app-reponse>
-                    
+
 
                 </div>
+                <app-reponse [postId]=post.id></app-reponse>
 
 
-            
+            </div>
+
+
+
         </div>
     </div>
     <div *ngSwitchCase="'Entertainment'">
         <div *ngFor="let post of entertainmentPosts" style="color: black;">
 
-                <div class="card p-4">
-                    <div class="" style="text-align: left; height: 15rem;">
-                        <div style="border-bottom: 1px solid white;">
-                            <h3 class="card-title">{{post.title}}</h3>
-                            <div class="d-flex justify-content-around">
-                                <p class="card-subtitle mb-2 mr-auto">posted by: Charlemegne Smith</p>
-                                <p class="card-subtitle">{{post.categoryType}}</p>
-                            </div>
+            <div class="card p-4">
+                <div class="" style="text-align: left; height: 15rem;">
+                    <div style="border-bottom: 1px solid white;">
+                        <h3 class="card-title">{{post.title}}</h3>
+                        <div class="d-flex justify-content-around">
+                            <p class="card-subtitle mb-2 mr-auto">posted by: Charlemegne Smith</p>
+                            <p class="card-subtitle">{{post.categoryType}}</p>
                         </div>
-                        <div style=" border-bottom: 1px solid white; height: 10rem;" class="p-2">
-                            <p>{{post.content}}</p>
-
-                        </div>
-
+                    </div>
+                    <div style=" border-bottom: 1px solid white; height: 10rem;" class="p-2">
+                        <p>{{post.content}}</p>
 
                     </div>
-                    <app-reponse [postId]=post.id></app-reponse>
-                    
+
 
                 </div>
+                <app-reponse [postId]=post.id></app-reponse>
 
 
-            
+            </div>
+
+
+
         </div>
     </div>
 </div>

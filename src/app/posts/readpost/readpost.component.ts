@@ -12,12 +12,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./readpost.component.css']
 })
 export class ReadpostComponent implements OnInit {
-  locationForPosts : number = 0;
+  locationForPosts: number = 0;
   view: string = "all"
 
-  constructor(private http: HttpClient, private _posts: PostsService) {    
+  constructor(private http: HttpClient, private _posts: PostsService) {
   }
-  
+
 
   postList: Array<Posts> = []
   locationdata: any = [];
@@ -26,17 +26,16 @@ export class ReadpostComponent implements OnInit {
   housingPosts: Array<Posts> = []
   eventPosts: Array<Posts> = []
   entertainmentPosts: Array<Posts> = []
+  locationPosts: Array<Posts> = []
   find: false;
 
   ngOnInit(): void {
     this._posts.getPosts().subscribe(data => {
       this.postList = data;
-      console.log(data);
-
     })
-  
   }
-// Start of post filtering methods -----------------------------------
+
+  // Start of post filtering methods -----------------------------------
   listFoodPosts(categoryType: string) {
     if (this.foodPosts.length >= 0) {
       for (let i = 0; i < this.postList.length; i++) {
@@ -91,25 +90,31 @@ export class ReadpostComponent implements OnInit {
     }
     this.view = categoryType;
   }
-// end of post filtering methods -----------------------------------
+  // end of post filtering methods -----------------------------------
 
-getData() {
-  const url = 'http://localhost:8085/locations/';
-  this.http.get(url).subscribe(res => {
-    this.locationdata = res;
-    console.log(this.locationdata);
-  });
-}
+  getData() {
+    const url = 'http://localhost:8085/locations/';
+    this.http.get(url).subscribe(res => {
+      this.locationdata = res;
+      console.log(this.locationdata);
+    });
+  }
 
-filterByLocation(locationId: number) {
-  const url = 'http://localhost:8085/posts/';
-  this.http.get(url).subscribe(res => {
-    this.locationdata = res;
-    console.log(this.locationdata);
-  });
-}
+  filterByLocation() {
 
-//
+    if (this.locationForPosts != 0) {
+      const url = 'http://localhost:8085/post/byLocation/' + this.locationForPosts;
+      this.http.get<Posts[]>(url).subscribe(res => {
+        this.postList = res;
+      });
+    }
+    else {
+      this._posts.getPosts().subscribe(data => {
+        this.postList = data;
+      })
+    }
+
+  }
 
   openNav() {
     document.getElementById("mySidenav").style.width = "250px";
