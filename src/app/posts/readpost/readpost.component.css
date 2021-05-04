@@ -8,6 +8,21 @@
     color: #f5f5f5;
 }
 
+#filterbtn {
+  width: 180px;
+  margin: 20px;
+}
+
+ #location {
+  width:200px;
+  margin: 10px;
+} 
+
+/* #locationoption {
+  color: white;
+} */ 
+
+
 .sidenav {
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */

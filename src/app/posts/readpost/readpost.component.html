@@ -1,9 +1,23 @@
-<div>
-    <span (click)="openNav()" style="color: white;">open (click me and change me later)</span>
+
+<div><span id="filterspan" (click)="openNav()" style="color: white;">
+  <button (click)="getData()" id="filterbtn"
+            class="btn btn-dark"> Filter</button></span>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" id="closebtn">&times;</a>
         <a href="#">Location</a>
-        <a (click)="handleShowPost()">Create Post</a>
+      <a (click)="handleShowPost()">Create Post</a>
+
+        <select [(ngModel)]="this.locationForPosts" name="location"
+            id="location">
+            <option value=0>All</option>
+            <option *ngFor="let loc of locationdata" value="{{loc.id}}">
+                {{ loc.city }}, {{ loc.state }}
+                <!--can remove loc.id later-->{{loc.id}}
+            </option>            
+        </select>
+        <button class = "btn btn-primary" (click)="filterByLocation()">Sort By Location</button>
+
+
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Category</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -17,12 +31,14 @@
     </div>
 </div>
 
+
 <!-- Little problem is that when I  try to filter the posts by one thing i.e. Food, 
      and filter by something else, I cannot filter by food again unless refreshing 
      Hopefully we will figure a solution soon! -->
 
 
 <app-writepost id="writepost" displayCreate={{showCreatePost}}></app-writepost>
+
 
 <div [ngSwitch]=view>
     <div *ngSwitchCase="'all'">
@@ -40,10 +56,13 @@
                         <p>{{post.content}}</p>
                     </div>
                 </div>
-                <app-reponse [postId]=post.id></app-reponse>
+                <div>
+                    <app-reponse [postId]=post.id></app-reponse>
+                </div>
             </div>
         </div>
     </div>
+  
     <div *ngSwitchCase="'Food'">
         <div *ngFor="let post of foodPosts" style="color: black;">
             <div class="card p-4">
@@ -63,6 +82,7 @@
             </div>
         </div>
     </div>
+  
     <div *ngSwitchCase="'Housing'">
         <div *ngFor="let post of housingPosts" style="color: black;">
             <div class="card p-4">
@@ -82,6 +102,7 @@
             </div>
         </div>
     </div>
+  
     <div *ngSwitchCase="'Events'">
         <div *ngFor="let post of eventPosts" style="color: black;">
             <div class="card p-4">
@@ -99,8 +120,10 @@
                 </div>
                 <app-reponse [postId]=post.id></app-reponse>
             </div>
+
         </div>
     </div>
+  
     <div *ngSwitchCase="'Entertainment'">
         <div *ngFor="let post of entertainmentPosts" style="color: black;">
             <div class="card p-4">

@@ -16,8 +16,10 @@ export class RepliesService {
     })
   }
 
-  getReplies(postId: Object): Observable<any> {
-    return this.http.get<any>(this.baseUrl +"responses/" + postId)
+
+  getReplies(postId: Object): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl + "responses/"+ postId)
+
     .pipe(
       retry(1),
       catchError(this.errorHandler)
