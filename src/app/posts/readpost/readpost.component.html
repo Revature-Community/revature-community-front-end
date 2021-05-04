@@ -3,6 +3,7 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" id="closebtn">&times;</a>
         <a href="#">Location</a>
+        <a (click)="handleShowPost()">Create Post</a>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Category</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -20,7 +21,7 @@
      and filter by something else, I cannot filter by food again unless refreshing 
      Hopefully we will figure a solution soon! -->
 
-<app-writepost></app-writepost>
+<app-writepost displayCreate={{showCreatePost}}></app-writepost>
 
 <div [ngSwitch]=view>
     <div *ngSwitchCase="'all'">

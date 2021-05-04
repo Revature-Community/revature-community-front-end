@@ -1,4 +1,4 @@
-<div id="post-container">
+<div [ngClass]="displayCreate == 'true' ? 'show' : 'hidden'" id="post-container">
 <div class="revature" [ngSwitch]="allLocations">
   <div id="new-loc" class="btn revature" (click)="switch()">Add New Location</div>
   <div id="sel" *ngSwitchCase="'all'">
@@ -20,11 +20,12 @@
   </div>
   <div *ngSwitchCase="'create'">
     <input
-      style="width: 30%; border-radius: 4px;"
+      id="create-city"
       [(ngModel)]="city"
       placeholder="Enter Your City"
     />
     <select id="select-city" [(ngModel)]="state">
+      <option value="" disabled selected>Select State</option>
       <option *ngFor="let state of states" [value]="state">
         {{ state }}
       </option>
@@ -88,7 +89,7 @@
       <textarea
         type="text"
         class="form-control p-text"
-        placeholder="content"
+        placeholder="Content"
         name="content"
         [(ngModel)]="content"
         (keyup)="autoGrow()"

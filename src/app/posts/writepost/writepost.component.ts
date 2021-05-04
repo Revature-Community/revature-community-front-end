@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { LocationService } from 'src/app/location.service';
 
 import { Loc } from '../../models/location';
@@ -16,6 +16,7 @@ import { ThisReceiver } from '@angular/compiler';
 export class WritepostComponent implements OnInit {
 
   @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef | any;
+  @Input() displayCreate: boolean | any;
   locationForPosts : number = 0;
 
   constructor(

@@ -25,7 +25,7 @@ export class LandingComponent implements OnInit {
       localStorage.setItem("userId", data.id.toString(10));
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("username", data.username);
-      this.router.navigate(['/readpost'])
+      this.router.navigate(['/readpost']);
     });
   }
 
