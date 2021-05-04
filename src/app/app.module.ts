@@ -14,6 +14,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostsService } from './posts.service';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core'; 
 import { GeocodingComponent } from './geocoding/geocoding.component'
+import { WritepostComponent } from './posts/writepost/writepost.component';
+import { ReadpostComponent } from './posts/readpost/readpost.component';
 
           
 @NgModule({
@@ -24,7 +26,9 @@ import { GeocodingComponent } from './geocoding/geocoding.component'
     TopnavComponent,
     FooterComponent,
     LandingComponent,
-    GeocodingComponent
+    GeocodingComponent, 
+    WritepostComponent, 
+    ReadpostComponent
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@ export class LocationComponent implements OnInit {
 
   allLocations: string = 'all';
 
-  locationdata: any = [];
+  locationdata: any = []; 
   city = '';
   state = '';
   states = [
@@ -73,15 +73,12 @@ export class LocationComponent implements OnInit {
   getData() {
     this.locationService.getLocations().subscribe(res => {
       this.locationdata = res;
-      console.log(this.locationdata);
     });
   }
 
   constructor(
     private locationService: LocationService,
-  ) {
-    this.locationdata = this.getData(); 
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getData();
@@ -100,6 +97,7 @@ export class LocationComponent implements OnInit {
     if (this.allLocations.match('all')) {
       this.allLocations = 'create';
     } else if (this.allLocations.match('create')) {
+      this.getData(); 
       this.allLocations = 'all';
     }
   }

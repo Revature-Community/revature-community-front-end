@@ -77,13 +77,6 @@ describe('RepliesService', () => {
       httpMock.verify();
     }));
 
-
-    const req = httpMock.expectOne(baseUrl+'delete/'+ 1);
-    expect(req.request.method).toBe('DELETE');
-    req.flush(1);
-    httpMock.verify();
-  }));
-
   it ("should update the selected reply"), inject([HttpClient, HttpTestingController], (http: HttpClient, httpMock: HttpTestingController) => {
     const reply = {
       "postId": 1,

@@ -126,6 +126,7 @@ export class WritepostComponent implements OnInit {
     if (this.allLocations.match('all')) {
       this.allLocations = 'create';
     } else if (this.allLocations.match('create')) {
+      this.getData();
       this.allLocations = 'all';
     }
   }
@@ -133,7 +134,6 @@ export class WritepostComponent implements OnInit {
   getData() {
     this._location.getLocations().subscribe(res => {
       this.locationdata = res;
-      console.log(this.locationdata);
     });
   }
 
