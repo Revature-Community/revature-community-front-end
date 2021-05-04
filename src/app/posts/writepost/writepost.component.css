@@ -44,10 +44,12 @@
 #sel{
   display: flex;
   height: 35px;
+  margin: 10px 0 7px 0;
 }
 
 #location{
   width: 35%;
+  margin-right: 5px;
 }
 
 #new-loc {
@@ -66,7 +68,6 @@
   padding: 14px;
 }
 
-
 #select-city:required:invalid {
   color: gray;
 }
@@ -79,4 +80,10 @@
 
 .show {
   display: block;
+}
+
+@media only screen and (max-width: 800px) {
+  .card {
+    width: 80%;
+  }
 }
