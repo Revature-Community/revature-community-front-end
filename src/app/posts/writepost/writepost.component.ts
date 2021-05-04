@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { LocationService } from 'src/app/location.service';
 
 import { Loc } from '../../models/location';
@@ -15,6 +15,8 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class WritepostComponent implements OnInit {
 
+  @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef | any;
+  @Input() displayCreate: boolean | any;
   locationForPosts : number = 0;
 
   constructor(
@@ -144,5 +146,16 @@ export class WritepostComponent implements OnInit {
     this.userPost.locationId.location = this.city + ", " + this.state
   }
 
+  cancelPost() {
+
+  }
+
+  autoGrow() {
+    console.log("hello")
+    const textArea = this.textArea.nativeElement;
+    textArea.style.overflow = 'hidden';
+    textArea.style.height = '5rem';
+    textArea.style.height = textArea.scrollHeight + 'px';
+  }
 
 }

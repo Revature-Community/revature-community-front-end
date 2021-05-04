@@ -16,6 +16,7 @@ export class RepliesService {
     })
   }
 
+
   getReplies(postId: Object): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl + "responses/"+ postId)
 

@@ -28,6 +28,7 @@ export class ReadpostComponent implements OnInit {
   entertainmentPosts: Array<Posts> = []
   locationPosts: Array<Posts> = []
   find: false;
+  showCreatePost = 'false';
 
   ngOnInit(): void {
     this._posts.getPosts().subscribe(data => {
@@ -123,5 +124,9 @@ export class ReadpostComponent implements OnInit {
   /* Set the width of the side navigation to 0 */
   closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+  }
+
+  handleShowPost() {
+    this.showCreatePost = this.showCreatePost === 'false' ? 'true' : 'false';
   }
 }

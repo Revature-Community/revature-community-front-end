@@ -52,6 +52,16 @@ displayMenu(){
     })
   }
 
+  submitEnter(e) {
+    if (e.ctrlKey && e.key === 'Enter') {
+      console.log('ctrl', e.ctrlKey, 'key', e.key);
+      this.textArea.nativeElement.value += "\n";
+      console.log(this.textArea)
+    } else if (e.key === 'Enter') {
+      this.handleResponses();
+    }
+  }
+
   editReply(){
     if(!this.responses[this.toggl].show) this.responses[this.toggl].show = !this.responses[this.toggl].show;
     let currRes = document.getElementById("res"+this.toggl+this.postId);
