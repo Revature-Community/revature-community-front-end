@@ -19,11 +19,13 @@ export class ResponseComponent implements OnInit {
   editButton:Boolean = false;
   ngOnInit(): void {
     this.repliesService.getReplies(this.postId).subscribe(res => {
+      //console.log(res);
       for (let val of res) {
         let lenless255 = false;
         if (val.content.length > 255) {
           lenless255 = true;
         }
+        
         const resp = {username: val.username, id: val.id, response: val.content, show: !lenless255};
         this.responses.push(resp);
       }
@@ -40,7 +42,6 @@ displayMenu(){
     if (this.currentResponse.length > 255) {
       lenless255 = true;
     }
-    //TODO: REMOVE userId + useername later when login imple
     const replyData = {postId: this.postId, content : this.currentResponse, userId: localStorage.getItem("userId"), username: localStorage.getItem("username")};
     this.repliesService.postReply(replyData).subscribe(res => {
       this.responses.push({username: localStorage.getItem("username"), id: res.id, response: res.content, post_id: res.postId, show: res.content.length < 255});
@@ -63,13 +64,11 @@ displayMenu(){
 
   editReply(){
     if(!this.responses[this.toggl].show) this.responses[this.toggl].show = !this.responses[this.toggl].show;
-    let currRes = document.getElementById("res"+this.toggl);
+    let currRes = document.getElementById("res"+this.toggl+this.postId);
     let content = currRes.innerHTML;
-    document.getElementById("res"+this.toggl).contentEditable = "true";
-    let textAreaUpdate = document.getElementById("res-inputupdate"+this.toggl);
+    document.getElementById("res"+this.toggl+this.postId).contentEditable = "true";
+    let textAreaUpdate = document.getElementById("res-inputupdate"+this.toggl+this.postId);
     textAreaUpdate.style.display="block";
-    // let textAreaUpdateElement = (textAreaUpdate as HTMLInputElement);
-    // textAreaUpdate.style.overflow = 'hidden';
     (textAreaUpdate as HTMLInputElement).value=content;
     textAreaUpdate.style.height = 'auto';
     textAreaUpdate.style.height = textAreaUpdate.scrollHeight + 'px';
@@ -83,17 +82,17 @@ displayMenu(){
   }
 
   submitUpdateReply(){
-    const reply = {id: this.responses[this.toggl].id, content: this.editedResponse, postId: this.postId, userId: 1};
+    const reply = {username: localStorage.getItem("username"), id: this.responses[this.toggl].id, content: this.editedResponse, postId: this.postId, userId: 1};
     this.repliesService.updateReply(reply).subscribe();
-    document.getElementById("res-inputupdate"+this.toggl).style.display="none";
-    document.getElementById("res"+this.toggl).innerHTML = this.editedResponse;
-    document.getElementById("res"+this.toggl).style.display="block";
+    document.getElementById("res-inputupdate"+this.toggl+this.postId).style.display="none";
+    document.getElementById("res"+this.toggl+this.postId).innerHTML = this.editedResponse;
+    document.getElementById("res"+this.toggl+this.postId).style.display="block";
     this.editButton = false;
     this.disableEdit(this.toggl)
   }
 
   submitDelete(){
-    let rem = document.getElementById("box"+this.toggl)
+    let rem = document.getElementById("box"+this.toggl+this.postId)
     this.repliesService.deleteReply(this.responses[this.toggl].id).subscribe(res => {
     })
     rem.remove();

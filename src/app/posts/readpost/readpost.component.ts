@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { find } from 'rxjs/operators';
 import { Posts } from 'src/app/models/posts';
 import { PostsService } from 'src/app/posts.service';
+import { Loc } from '../../models/location';
+import { Locations } from 'src/app/models/locations';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-readpost',
@@ -9,27 +12,31 @@ import { PostsService } from 'src/app/posts.service';
   styleUrls: ['./readpost.component.css']
 })
 export class ReadpostComponent implements OnInit {
-
+  locationForPosts: number = 0;
   view: string = "all"
 
-  constructor(private _posts: PostsService) { }
+  constructor(private http: HttpClient, private _posts: PostsService) {
+  }
+
 
   postList: Array<Posts> = []
+  locationdata: any = [];
 
   foodPosts: Array<Posts> = []
   housingPosts: Array<Posts> = []
   eventPosts: Array<Posts> = []
   entertainmentPosts: Array<Posts> = []
+  locationPosts: Array<Posts> = []
   find: false;
   showCreatePost = 'false';
 
   ngOnInit(): void {
     this._posts.getPosts().subscribe(data => {
       this.postList = data;
-      console.log(data);
     })
   }
 
+  // Start of post filtering methods -----------------------------------
   listFoodPosts(categoryType: string) {
     if (this.foodPosts.length >= 0) {
       for (let i = 0; i < this.postList.length; i++) {
@@ -44,7 +51,6 @@ export class ReadpostComponent implements OnInit {
       this.view = categoryType;
     }
   }
-
   listEventPosts(categoryType: string) {
     if (this.eventPosts.length >= 0) {
       for (let i = 0; i < this.postList.length; i++) {
@@ -71,7 +77,6 @@ export class ReadpostComponent implements OnInit {
       this.view = categoryType;
     }
   }
-
   listEntertainmentPosts(categoryType: string) {
     if (this.entertainmentPosts.length == 0) {
       for (let i = 0; i < this.postList.length; i++) {
@@ -81,21 +86,36 @@ export class ReadpostComponent implements OnInit {
             break;
           }
           this.entertainmentPosts.push(this.postList[i])
-
         }
-        // else{
-        //   break;
-        // }
-
       }
-
     }
-
     this.view = categoryType;
   }
+  // end of post filtering methods -----------------------------------
 
+  getData() {
+    const url = 'http://localhost:8085/locations/';
+    this.http.get(url).subscribe(res => {
+      this.locationdata = res;
+      console.log(this.locationdata);
+    });
+  }
 
+  filterByLocation() {
 
+    if (this.locationForPosts != 0) {
+      const url = 'http://localhost:8085/post/byLocation/' + this.locationForPosts;
+      this.http.get<Posts[]>(url).subscribe(res => {
+        this.postList = res;
+      });
+    }
+    else {
+      this._posts.getPosts().subscribe(data => {
+        this.postList = data;
+      })
+    }
+
+  }
 
   openNav() {
     document.getElementById("mySidenav").style.width = "250px";
