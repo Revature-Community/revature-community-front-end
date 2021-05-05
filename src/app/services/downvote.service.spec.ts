@@ -6,7 +6,7 @@ import { DownvoteService } from './downvote.service';
 
 describe('DownvoteService', () => {
   let service: DownvoteService;
-  let baseUrl = 'http://localhost:8085/api/v1/downvotes/';
+  let baseUrl = 'http://localhost:9095/api/v1/downvotes/';
   let downvote: any
   let httpClient: HttpClient
   let httpTestingController: HttpTestingController

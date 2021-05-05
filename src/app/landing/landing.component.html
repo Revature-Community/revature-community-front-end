@@ -4,9 +4,6 @@
       <div class="jumbotron">
         <h1 class="text-center">Revature Community</h1>
         <p class="text-center">Connect with your fellow associates! (Description pending)</p>
-        <img
-          src="file:///C|/Users/Goob/AppData/Roaming/Adobe/Dreamweaver 2020/en_US/Configuration/Temp/Assets/eamC0CE.tmp/images/1200X400.gif"
-          alt="" class="img-fluid">
       </div>
     </div>
   </div>
@@ -40,18 +37,18 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
       <div class="modal-body">
-        <form action="app/topnav" method="post">
+        <form #form="ngForm" ngNativeValidate action="app/topnav" method="post">
           <div class="form-group">
             <input type="email" [(ngModel)]='username' class="form-control" name="email" placeholder="Email"
-              required="required">
+            required />
           </div>
           <div class="form-group">
             <input type="password" [(ngModel)]='password' class="form-control" name="password" placeholder="Password"
-              required="required">
+            required />
           </div>
           <div class="form-group">
             <button (click)=validateUser() type="submit"
-              class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+              class="btn btn-primary btn-lg btn-block login-btn" data-dismiss="modal">Login</button>
           </div>
         </form>
       </div>
@@ -70,30 +67,30 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
       <div class="modal-body">
-        <form action="app/topnav" method="post">
+        <form #form="ngForm" ngNativeValidate action="app/topnav" method="post">
           <div class="form-group">
             <input type="username" [(ngModel)]='username' class="form-control" name="username" placeholder="Username"
-              required="required">
+              required />
           </div>
           <div class="form-group">
             <input type="email" [(ngModel)]='email' class="form-control" name="email" placeholder="Email"
-              required="required">
+            required />
           </div>
           <div class="form-group">
             <input type="password" [(ngModel)]='password' class="form-control" name="password" placeholder="Password"
-              required="required">
+            required />
           </div>
           <div class="form-group">
             <input type="text" [(ngModel)]='firstName' class="form-control" name="firstName" placeholder="First Name"
-              required="required">
+            required />
           </div>
           <div class="form-group">
             <input type="text" [(ngModel)]='lastName' class="form-control" name="lastName" placeholder="Last Name"
-              required="required">
+            required />
           </div>
           <div class="form-group">
-            <button (click)=createUser() type="submit"
-              class="btn btn-primary btn-lg btn-block login-btn">Sign Up</button>
+            <button  type="submit" [disabled]="!email || !password || !firstName || !lastName || !username" (click)=createUser()
+              class="btn btn-primary btn-lg btn-block login-btn" data-dismiss="modal">Sign Up</button>
           </div>
         </form>
       </div>

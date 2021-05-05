@@ -6,7 +6,7 @@ import { Posts } from './models/posts';
 @Injectable()
 export class PostsService {
 
-  baseUrl = 'http://localhost:8085/post/';
+  baseUrl = 'http://localhost:9095/post/';
   categoryType: any;
 
   constructor(private http:HttpClient) { }
