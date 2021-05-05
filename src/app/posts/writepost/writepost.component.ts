@@ -16,7 +16,6 @@ import { ThisReceiver } from '@angular/compiler';
 export class WritepostComponent implements OnInit {
 
   @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef | any;
-  @Input() displayCreate: boolean | any;
   locationForPosts : number = 0;
 
   constructor(
@@ -24,14 +23,18 @@ export class WritepostComponent implements OnInit {
     private _post: PostsService,
     private _location: LocationService
   ) {}
-
-  ngOnInit(): void {
-    this.getData();
-    console.log(this.locationdata);
-  }
   title: string = '';
   content: string = '';
   categoryType: string = '';
+  visible:boolean = false;
+  username:string='';
+  displayCreate:string='false';
+  error:string='';
+  
+  ngOnInit(): void {
+    this.getData();
+    this.username = localStorage.getItem("username")[0];
+  }
   
   userPost: Posts = {
     title: this.title,
@@ -59,6 +62,9 @@ export class WritepostComponent implements OnInit {
 
     this._post.submitPost(this.userPost).subscribe(data => {
     });
+
+    document.getElementById("cancel-post").click();
+    document.getElementById("create-post").blur();
   }
 
   //Location component functions
@@ -121,18 +127,18 @@ export class WritepostComponent implements OnInit {
 
   addLocation() {
     let location = new Loc(this.city, this.state);
-    console.log(location);
-    this._location.saveLocation(location).subscribe((data) => {
-      this.locationForPosts = data.id;
-    });
+    console.log('state', this.state);
+    if(this.city && this.state) {
+      this._location.saveLocation(location).subscribe((data) => {
+        this.locationForPosts = data.id;
+      });
+      this.toggleCreateLocation();
+    }
+    this.error = "State and City cannot be empty.";
   }
 
-  switch() {
-    if (this.allLocations.match('all')) {
-      this.allLocations = 'create';
-    } else if (this.allLocations.match('create')) {
-      this.allLocations = 'all';
-    }
+  toggleCreateLocation() {
+    this.visible = !this.visible;
   }
 
   getData() {
@@ -158,6 +164,9 @@ export class WritepostComponent implements OnInit {
     textArea.style.overflow = 'hidden';
     textArea.style.height = '5rem';
     textArea.style.height = textArea.scrollHeight + 'px';
+  }
+  blurInput() {
+    document.getElementById("create-post").blur();
   }
 
 }
