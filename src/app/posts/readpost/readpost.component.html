@@ -1,5 +1,5 @@
 <div>
-    <span (click)="openNav()" style="color: white;">open (click me and change me later)</span>
+    <span (click)="openNav()" style="color: white;">></span>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" id="closebtn">&times;</a>
         <a href="#">Location</a>
@@ -22,7 +22,7 @@
      Hopefully we will figure a solution soon! -->
 
 
-<app-writepost id="writepost" displayCreate={{showCreatePost}}></app-writepost>
+<app-writepost id="writepost"></app-writepost>
 
 <div [ngSwitch]=view>
     <div *ngSwitchCase="'all'">
