@@ -33,7 +33,7 @@ export class WritepostComponent implements OnInit {
   
   ngOnInit(): void {
     this.getData();
-    this.username = localStorage.getItem("username");
+    this.username = localStorage.getItem("username")[0];
   }
   
   userPost: Posts = {

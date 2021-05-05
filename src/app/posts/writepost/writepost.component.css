@@ -134,6 +134,13 @@
   border-radius: 25px;
   background-color: #F26925;
   margin-right: 10px;
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+}
+.username>div {
+  position: relative;
+  bottom: 5px;
 }
 
 .orange{ 
