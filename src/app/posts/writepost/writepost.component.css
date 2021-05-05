@@ -100,7 +100,7 @@
 #create-post-container {
   text-align: center;
   margin: auto;
-  width: 60%;
+  width: 40rem;
   padding: 20px;
   border-radius: 10px;
   background-color:#121621;
@@ -150,6 +150,9 @@
 
 @media only screen and (max-width: 800px) {
   .card {
+    width: 80%;
+  }
+  #create-post-container{
     width: 80%;
   }
 }
