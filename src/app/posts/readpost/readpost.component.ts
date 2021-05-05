@@ -26,13 +26,13 @@ export class ReadpostComponent implements OnInit {
   locationPosts: Array<Posts> = []
   find: false;
   showCreatePost = 'false';
-  pl;
 
   ngOnInit(): void {
     this._posts.getPosts().subscribe(data => {
       console.log('data', data);
       this.postList = data;
     })
+    this.getData();
   }
 
   updatePosts(e) {
@@ -45,12 +45,15 @@ export class ReadpostComponent implements OnInit {
   // Start of post filtering methods -----------------------------------
   listFoodPosts(categoryType: string) {
     if (this.foodPosts.length >= 0) {
+      console.log("foodPosts: "+this.foodPosts);
+      console.log("Category Type: "+categoryType);
       for (let i = 0; i < this.postList.length; i++) {
         if (this.postList[i].categoryType === "Food") {
           if (this.foodPosts.includes(this.postList[i])) {
-            break;
+            continue;
           }
           this.foodPosts.push(this.postList[i])
+          console.log("postLists of i"+this.postList[i]);
 
         }
       }
@@ -106,7 +109,9 @@ export class ReadpostComponent implements OnInit {
     });
   }
 
-  filterByLocation() {
+  filterByLocation(locId: number) {
+
+    this.locationForPosts = locId;
 
     if (this.locationForPosts != 0) {
       console.log("Inside if filterByLocation: " + this.locationForPosts);
