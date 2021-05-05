@@ -8,18 +8,20 @@
     color: #f5f5f5;
 }
 
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 95px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-  }
+#filterbtn {
+  width: 180px;
+  margin: 20px;
+}
+
+ #location {
+  width:200px;
+  margin: 10px;
+} 
+
+/* #locationoption {
+  color: white;
+} */ 
+
   
   /* The navigation menu links */
   .sidenav a {
@@ -56,3 +58,14 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+  
+  @media only screen and (max-width: 800px) {
+    .card {
+      width: 80%;
+    }
+  }
+
+  #createPost{
+    color:white; 
+    background-color: #F26925;
+}

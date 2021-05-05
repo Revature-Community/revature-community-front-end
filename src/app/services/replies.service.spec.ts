@@ -3,7 +3,7 @@ import { RepliesService } from './replies.service';
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import { HttpClient } from '@angular/common/http';
 describe('RepliesService', () => {
-  let baseUrl = 'http://localhost:8085/api/v1/responses/';
+  let baseUrl = 'http://localhost:9095/api/v1/responses/';
   let repliesService: RepliesService;
   let response: any;
   let httpClient: HttpClient;
