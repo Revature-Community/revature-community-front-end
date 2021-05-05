@@ -6,6 +6,7 @@
     overflow-y: auto; 
     background-color: #121621;
     color: #f5f5f5;
+    box-shadow: 0 0 10px 0 #474c55;
 }
 
 #filterbtn {
