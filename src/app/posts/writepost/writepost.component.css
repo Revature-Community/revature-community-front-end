@@ -53,7 +53,7 @@
 }
 
 #category {
-  width: 35%;
+  width: 49%;
   height: 35px;
 }
 
@@ -64,8 +64,8 @@
 }
 
 #location{
-  width: 35%;
-  margin-right: 5px;
+  width: 49%;
+  margin-right: 10px;
 }
 
 #new-loc {

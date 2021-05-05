@@ -31,14 +31,12 @@
               <div class='orange'>{{error}}</div>
             </div>
             <div id="sel" >
-              <label for="location">Location:&nbsp;&nbsp;</label>
               <select [(ngModel)]="this.locationForPosts" name="location" id="location">
                 <option value="0" disabled selected>Select State</option>
                 <option *ngFor="let loc of locationdata" value="{{loc.id}}">
                   {{ loc.city }}, {{ loc.state }}
                 </option>
               </select>
-              <label for="category">Category:&nbsp;</label>
               <select name="categoryType" id="category" [(ngModel)]="this.categoryType">
                 <option value="" disabled selected>Select Category</option>
                 <option value="Housing">Housing</option>
