@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { find } from 'rxjs/operators';
 import { Posts } from 'src/app/models/posts';
 import { PostsService } from 'src/app/posts.service';
-import { Loc } from '../../models/location';
-import { Locations } from 'src/app/models/locations';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -29,8 +26,16 @@ export class ReadpostComponent implements OnInit {
   locationPosts: Array<Posts> = []
   find: false;
   showCreatePost = 'false';
+  pl;
 
   ngOnInit(): void {
+    this._posts.getPosts().subscribe(data => {
+      console.log('data', data);
+      this.postList = data;
+    })
+  }
+
+  updatePosts(e) {
     this._posts.getPosts().subscribe(data => {
       this.postList = data;
     })
@@ -97,7 +102,6 @@ export class ReadpostComponent implements OnInit {
     const url = 'http://localhost:8085/locations/';
     this.http.get(url).subscribe(res => {
       this.locationdata = res;
-      console.log(this.locationdata);
     });
   }
 

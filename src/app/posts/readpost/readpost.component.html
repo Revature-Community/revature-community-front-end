@@ -36,27 +36,28 @@
      Hopefully we will figure a solution soon! -->
 
 
-<app-writepost id="writepost"></app-writepost>
+<app-writepost id="writepost" (newItemEvent)="updatePosts($event)"></app-writepost>
 
 
 <div [ngSwitch]=view>
     <div *ngSwitchCase="'all'">
-        <div *ngFor="let post of postList" style="color: black;">
+        <div *ngFor="let post of postList.slice().reverse()" style="color: black;">
             <div class="card p-4">
-                <div class="" style="text-align: left; height: 15rem;">
+                <div class="" style="text-align: left; height: 15rem; display: flex; flex-direction: column;">
                     <div style="border-bottom: 1px solid white;">
                         <h3 class="card-title">{{post.title}}</h3>
                         <div class="d-flex justify-content-around">
-                            <p class="card-subtitle mb-2 mr-auto">posted by: Charlemegne Smith</p>
+                            <p class="card-subtitle mb-2 mr-auto">posted by: {{post.username}}</p>
                             <p class="card-subtitle">{{post.categoryType}}</p>
                         </div>
                     </div>
-                    <div style=" border-bottom: 1px solid white; height: 10rem;" class="p-2">
-                        <p>{{post.content}}</p>
+                    <div style="height: 100%; flex: 1;">
+                        <div style="padding: 10px 0 10px 0">{{post.content}}</div>
+                        <div style="border-top: 1px solid white;">
+                            <app-reponse [postId]=post.id></app-reponse>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <app-reponse [postId]=post.id></app-reponse>
+
                 </div>
             </div>
         </div>
