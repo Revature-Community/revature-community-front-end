@@ -77,7 +77,6 @@ export class WritepostComponent implements OnInit {
         username: localStorage.getItem("username"),
       };
       this._post.submitPost(this.userPost).subscribe((data) => {
-        //some sort of return data to populate our posts
         this.addPosts(true);
       });
       this.clear();
@@ -184,7 +183,6 @@ export class WritepostComponent implements OnInit {
   }
 
   autoGrow() {
-    console.log("hello");
     const textArea = this.textArea.nativeElement;
     textArea.style.overflow = "hidden";
     textArea.style.height = "5rem";

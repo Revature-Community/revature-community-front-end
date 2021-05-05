@@ -39,6 +39,7 @@
 
 .p-text {
   height: 5rem;
+  resize: none;
 }
 
 .post-cancel {
@@ -106,7 +107,7 @@
 }
 
 .modal-content{
-  border-bottom: none;
+  border: none;
 }
 
 .modal-body {
