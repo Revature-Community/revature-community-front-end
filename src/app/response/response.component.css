@@ -23,21 +23,21 @@
 
 #res {
     position: relative;
-    border: 1px solid black; 
+    border:none; 
     padding: 10px;
     margin: 10px 0px 5px 0px; 
     border-radius: 10px; 
     height: autosize; 
-    background-color: #343a40; 
-    color: #FFFFFF;
+    background-color: #FFFFFF; 
+    color: black;
 }
 
 #response-input {
     resize:none; 
     width: 95%;
     padding-left: 10px; 
-    background-color: #343a40; 
-    color: #FFFFFF; 
+    background-color: #FFFFFF; 
+    color: black; 
     border-radius: 10px;
 }
 
