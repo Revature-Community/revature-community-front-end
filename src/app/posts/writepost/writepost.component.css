@@ -4,7 +4,9 @@
   font-family: fortuna, sans-serif;
   margin: auto;
   padding: 10px;
+  
 }
+
 
 #post-container{
   width: 30rem;
@@ -81,11 +83,11 @@
 }
 
 .hidden {
-  display: none;
+  display: none!important;
 }
 
 .show {
-  display: block;
+  display: block!important;
 }
 
 .new-loc-btn {

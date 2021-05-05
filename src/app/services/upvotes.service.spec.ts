@@ -5,7 +5,7 @@ import { inject, TestBed } from '@angular/core/testing';
 import { UpvotesService } from './upvotes.service';
 
 describe('UpvotesService', () => {
-  let baseUrl = 'http://localhost:8085/upvote/'
+  let baseUrl = 'http://localhost:9095/upvote/'
   let upvotesService: UpvotesService;
   let upvote:any;
   let httpClient: HttpClient;

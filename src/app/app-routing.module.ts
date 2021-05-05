@@ -9,11 +9,9 @@ import { ResponseComponent } from './response/response.component';
 
 
 const routes: Routes = [
-  { path: "readpost", component: ReadpostComponent, canActivate: [AuthGuard] },
-  { path: "writepost", component: WritepostComponent, canActivate: [AuthGuard] },
-  { path: "", component: LandingComponent },
-  { path: "location", component:LocationComponent, canActivate: [AuthGuard] },
-  { path: "response", component:ResponseComponent, canActivate: [AuthGuard] }
+  { path: "community", component: ReadpostComponent, canActivate: [AuthGuard] },
+  { path: "login", component: LandingComponent },
+  { path: '', redirectTo: '/community', pathMatch: 'full' }
 ];
 
 @NgModule({
