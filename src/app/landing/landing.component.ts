@@ -11,21 +11,24 @@ import { LandingService } from './landing.service';
 export class LandingComponent implements OnInit {
 
   id: string;
-  username='';
-  password='';
-  email='';
-  firstName='';
-  lastName='';
+  username;
+  password;
+  email;
+  firstName;
+  lastName;
   constructor(private landingService: LandingService, private router:Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem("isLoggedIn") == "true"){
+      this.router.navigate(['/community']);
+    }
   }
   validateUser(){
     this.landingService.login(this.username, this.password).subscribe(data=>{
       localStorage.setItem("userId", data.id.toString(10));
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("username", data.username);
-      this.router.navigate(['/readpost']);
+      this.router.navigate(['/community'])
     });
   }
 
@@ -39,5 +42,6 @@ export class LandingComponent implements OnInit {
     this.landingService.register(user).subscribe(data=>{
       alert("Successfully registered! You may now log in.");
     });
+    
   }
 }
