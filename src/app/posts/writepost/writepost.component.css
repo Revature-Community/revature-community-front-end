@@ -41,6 +41,7 @@
 
 .p-text {
   height: 5rem;
+  resize: none;
 }
 
 .post-cancel {
@@ -101,14 +102,14 @@
 #create-post-container {
   text-align: center;
   margin: auto;
-  width: 60%;
+  width: 40rem;
   padding: 20px;
   border-radius: 10px;
   background-color:#474C55;
 }
 
 .modal-content{
-  border-bottom: none;
+  border: none;
 }
 
 .modal-body {
@@ -151,6 +152,9 @@
 
 @media only screen and (max-width: 800px) {
   .card {
+    width: 80%;
+  }
+  #create-post-container{
     width: 80%;
   }
 }
