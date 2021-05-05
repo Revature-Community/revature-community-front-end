@@ -38,7 +38,8 @@ export class ReadpostComponent implements OnInit {
   updatePosts(e) {
     this._posts.getPosts().subscribe(data => {
       this.postList = data;
-    })
+    });
+    this.getData();
   }
 
   // Start of post filtering methods -----------------------------------
@@ -99,7 +100,7 @@ export class ReadpostComponent implements OnInit {
   // end of post filtering methods -----------------------------------
 
   getData() {
-    const url = 'http://localhost:8085/locations/';
+    const url = 'http://localhost:9095/locations/';
     this.http.get(url).subscribe(res => {
       this.locationdata = res;
     });
@@ -108,12 +109,14 @@ export class ReadpostComponent implements OnInit {
   filterByLocation() {
 
     if (this.locationForPosts != 0) {
-      const url = 'http://localhost:8085/post/byLocation/' + this.locationForPosts;
+      console.log("Inside if filterByLocation: " + this.locationForPosts);
+      const url = 'http://localhost:9095/post/byLocation/' + this.locationForPosts;
       this.http.get<Posts[]>(url).subscribe(res => {
         this.postList = res;
       });
     }
     else {
+      console.log("Inside else filterByLocation: " + this.locationForPosts);
       this._posts.getPosts().subscribe(data => {
         this.postList = data;
       })

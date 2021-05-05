@@ -180,8 +180,13 @@ export class WritepostComponent implements OnInit {
   }
 
   addLocationToPost() {
-    this.userPost.locationId.location = this.city + ", " + this.state;
+
+    // this.userPost.locationId.location = this.city + ", " + this.state;
+    this.userPost.locationId.city = this.city;
+    this.userPost.locationId.state = this.state;
   }
+
+
 
   autoGrow() {
     console.log("hello");

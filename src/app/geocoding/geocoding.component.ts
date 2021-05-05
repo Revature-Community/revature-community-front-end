@@ -34,7 +34,7 @@ export class GeocodingComponent implements OnInit {
 
   geocoder: any;
   
-  baseurl: string = "http://localhost:8085/locations/"
+  baseurl: string = "http://localhost:9095/locations/"
 
   testlocs: Loc[] = [ ]
 
