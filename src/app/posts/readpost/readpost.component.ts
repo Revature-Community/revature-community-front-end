@@ -103,7 +103,7 @@ export class ReadpostComponent implements OnInit {
   // end of post filtering methods -----------------------------------
 
   getData() {
-    const url = 'http://localhost:9095/locations/';
+    const url = 'http://ec2-35-175-212-202.compute-1.amazonaws.com:9095/locations/';
     this.http.get(url).subscribe(res => {
       this.locationdata = res;
     });
@@ -115,7 +115,7 @@ export class ReadpostComponent implements OnInit {
 
     if (this.locationForPosts != 0) {
       console.log("Inside if filterByLocation: " + this.locationForPosts);
-      const url = 'http://localhost:9095/post/byLocation/' + this.locationForPosts;
+      const url = 'http://ec2-35-175-212-202.compute-1.amazonaws.com:9095/post/byLocation/' + this.locationForPosts;
       this.http.get<Posts[]>(url).subscribe(res => {
         this.postList = res;
       });

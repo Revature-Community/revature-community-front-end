@@ -8,7 +8,7 @@ import { User } from './models/user';
   providedIn: 'root'
 })
 export class ValidationServiceService {
-  baseUrl = 'http://localhost:9095/user/';
+  baseUrl = 'http://ec2-35-175-212-202.compute-1.amazonaws.com:9095/user/';
   constructor(private http: HttpClient) { }
 
   httpOptions = {
