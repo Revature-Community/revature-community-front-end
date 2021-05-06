@@ -37,6 +37,6 @@ validateUser() {
 
   logout() {
     localStorage.clear();
-    this.router.navigate(["/"]);
+    this.router.navigate(["/login"]);
   }
 }

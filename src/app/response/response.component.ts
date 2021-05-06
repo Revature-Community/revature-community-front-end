@@ -11,6 +11,8 @@ export class ResponseComponent implements OnInit {
   constructor(private repliesService: RepliesService) { }
   @Input() postId: number | any;
   @ViewChild('textArea', { read: ElementRef }) textArea: ElementRef | any;
+
+  correctUser:boolean = false;
   responses:any = [];
   currentResponse:any;
   displayOptions:Boolean = false;
@@ -19,14 +21,19 @@ export class ResponseComponent implements OnInit {
   editButton:Boolean = false;
   ngOnInit(): void {
     this.repliesService.getReplies(this.postId).subscribe(res => {
-      //console.log(res);
+      console.log(res);
       for (let val of res) {
+        if(localStorage.getItem("userId") == val.userId) {
+          this.correctUser = true;
+        } else {
+          this.correctUser = false;
+        }
         let lenless255 = false;
         if (val.content.length > 255) {
           lenless255 = true;
         }
         
-        const resp = {username: val.username, id: val.id, response: val.content, show: !lenless255};
+        const resp = {username: val.username, id: val.id, response: val.content, show: !lenless255, showEdit: this.correctUser};
         this.responses.push(resp);
       }
     })

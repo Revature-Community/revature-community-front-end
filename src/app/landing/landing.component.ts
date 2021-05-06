@@ -16,6 +16,7 @@ export class LandingComponent implements OnInit {
   email;
   firstName;
   lastName;
+  loginError;
   constructor(private landingService: LandingService, private router:Router) { }
 
   ngOnInit(): void {
@@ -24,12 +25,20 @@ export class LandingComponent implements OnInit {
     }
   }
   validateUser(){
-    this.landingService.login(this.username, this.password).subscribe(data=>{
-      localStorage.setItem("userId", data.id.toString(10));
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("username", data.username);
-      this.router.navigate(['/community'])
-    });
+    if (this.username && this.password) {
+      this.landingService.login(this.username, this.password).subscribe(data=>{
+        console.log('logging in', data)
+        if (data) {
+          localStorage.setItem("userId", data.id.toString(10));
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("username", data.username);
+          document.getElementById("close-modal").click();
+          this.router.navigate(['/community']);
+        } else {
+          this.loginError = 'Username and password does not match';
+        }
+      });
+    }
   }
 
   createUser(){
@@ -42,6 +51,11 @@ export class LandingComponent implements OnInit {
     this.landingService.register(user).subscribe(data=>{
       alert("Successfully registered! You may now log in.");
     });
+    this.username = "";
+    this.password = "";
+    this.email = "";
+    this.firstName = "";
+    this.lastName = "";
     
   }
 }

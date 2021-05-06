@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/internal/operators/catchError';
 import { User } from '../models/user';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { User } from '../models/user';
 })
 export class LandingService {
 
-  baseurl = 'http://localhost:9095/users/'
+  baseurl = 'http://ec2-35-175-212-202.compute-1.amazonaws.com:9095/users/'
   constructor(private http: HttpClient) { }
 
   httpOptions = {
@@ -20,8 +21,25 @@ export class LandingService {
       password: pass
     }
     return this.http.post<User>(`${this.baseurl}login`, JSON.stringify(credentials), this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    )
   }
   register(user: User) {
     return this.http.post<Object>(`${this.baseurl}add`, JSON.stringify(user), this.httpOptions)
+  }
+
+  
+  errorHandler(error: any) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Invalid username or password`;
+    }
+    alert(errorMessage);
+    return throwError(errorMessage);
   }
 }

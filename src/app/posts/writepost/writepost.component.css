@@ -132,7 +132,7 @@
 }
 
 .username {
-  color: black;
+  color: #fff;
   padding: 10px;
   border-radius: 25px;
   background-color: #FCB414;
@@ -140,10 +140,11 @@
   display: inline-block;
   height: 45px;
   width: 45px;
+  font-weight: 700;
 }
 .username>div {
   position: relative;
-  bottom: 5px;
+  bottom: auto;
 }
 
 .orange{ 
