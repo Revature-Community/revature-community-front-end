@@ -9,7 +9,10 @@ import { User } from '../models/user';
 })
 export class LandingService {
 
-  baseurl = 'http://ec2-35-175-212-202.compute-1.amazonaws.com:9095/users/'
+  // baseurl = 'http://ec2-35-175-212-202.compute-1.amazonaws.com:9095/users/'
+
+  baseurl = 'http://localhost:8085/users/';
+
   constructor(private http: HttpClient) { }
 
   httpOptions = {
